@@ -16,7 +16,7 @@ export default async function FaqPage() {
       <section className="section"><div className="container" style={{ maxWidth: 900 }}>
         <FaqList faqs={faqs} />
         <div className="card center" style={{ marginTop: 40 }}><h3>Still have a question?</h3><p className="muted">Our team is happy to help.</p>
-          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}><a className="btn btn--primary" href={`https://wa.me/${brand.whatsapp}`}>WhatsApp us</a><Link className="btn btn--outline" href="/contact">Contact form</Link></div></div>
+          <div className="btn-row btn-row--center"><a className="btn btn--primary" href={`https://wa.me/${brand.whatsapp}`}>WhatsApp us</a><Link className="btn btn--outline" href="/contact">Contact form</Link></div></div>
       </div></section>
     </>
   );

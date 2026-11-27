@@ -57,7 +57,7 @@ export default async function Home() {
             <ul className="spotlight__list">{spot.contains.map(c => <li key={c}><Icon name="check" size="sm" /> {c}</li>)}<li><Icon name="check" size="sm" /> Free shipping + festive-ready packing</li></ul>
             <Price now={spot.variants[0].pricePaise} mrp={spot.variants[0].mrpPaise} />
             <div><small className="muted" style={{ fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase' }}>Today’s price ends in</small><Countdown /></div>
-            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 6 }}>
+            <div className="btn-row" style={{ marginTop: 6 }}>
               {spot.inStock && <AddButton variantId={spot.variants[0].id} className="btn btn--primary btn--lg"><Icon name="bag" size="sm" /> Add to cart</AddButton>}
               <Link className="btn btn--outline btn--lg" href={`/products/${spot.slug}`}>View details</Link>
             </div>
@@ -74,7 +74,7 @@ export default async function Home() {
             <li><span className="tick"><Icon name="check" size="sm" /></span><span><b>Loaded with dry fruits.</b> Cashews, almonds, pistachios and seeds.</span></li>
             <li><span className="tick"><Icon name="check" size="sm" /></span><span><b>Hand-cut &amp; packed fresh.</b> Made the same week it reaches you.</span></li>
           </ul>
-          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}><Link className="btn btn--primary btn--lg" href="/products/dryfruit-khajur-pak">Buy Khajur Pak</Link><Link className="btn btn--outline btn--lg" href="/blog/khajur-pak-story">Read the story</Link></div>
+          <div className="btn-row"><Link className="btn btn--primary btn--lg" href="/products/dryfruit-khajur-pak">Buy Khajur Pak</Link><Link className="btn btn--outline btn--lg" href="/blog/khajur-pak-story">Read the story</Link></div>
         </div>
       </div></section>
 
@@ -106,7 +106,7 @@ export default async function Home() {
             <li><span className="tick"><Icon name="users" size="sm" /></span><span>Special pricing from 25 boxes</span></li>
             <li><span className="tick"><Icon name="truck" size="sm" /></span><span>Direct delivery to every recipient, pan-India</span></li>
           </ul>
-          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}><Link className="btn btn--gold btn--lg" href="/shop?c=gifting">Shop gifting</Link><Link className="btn btn--outline btn--lg" href="/contact#bulk">Bulk enquiry</Link></div>
+          <div className="btn-row"><Link className="btn btn--gold btn--lg" href="/shop?c=gifting">Shop gifting</Link><Link className="btn btn--outline btn--lg" href="/contact#bulk">Bulk enquiry</Link></div>
         </div>
         <div className="split__media" style={{ background: 'var(--cream-2)' }}><Art hero={2} /></div>
       </div></section>
@@ -127,7 +127,7 @@ export default async function Home() {
       {posts.length > 0 && (
         <section className="section"><div className="container">
           <div className="sec-head"><div><span className="eyebrow">Mantra Journal</span><h2>Recipes, rituals &amp; wellness</h2></div><Link className="link" href="/blog">Read the journal <Icon name="arrow" size="sm" /></Link></div>
-          <div className="blog-grid">{posts.slice(0, 3).map(p => (
+          <div className="blog-grid rail-sm">{posts.slice(0, 3).map(p => (
             <Link key={p.slug} className="post" href={`/blog/${p.slug}`}>
               <div className="post__media">{p.coverSlug && <BannerArt slug={p.coverSlug} />}</div>
               <div className="post__body"><span className="badge badge--soft" style={{ justifySelf: 'start' }}>{p.tag}</span><h3 style={{ margin: 0 }}>{p.title}</h3><p className="muted" style={{ margin: 0 }}>{p.excerpt}</p><small className="muted">{fmtDate(p.publishedAt)} · {p.readMins} min read</small></div>
@@ -138,7 +138,7 @@ export default async function Home() {
 
       <section className="section" style={{ paddingTop: 0 }}><div className="container split" style={{ alignItems: 'start' }}>
         <div><span className="eyebrow">FAQs</span><h2>Questions? We’ve got answers.</h2><p className="muted">Can’t find what you’re looking for? Our team replies on WhatsApp within minutes during working hours.</p>
-          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}><Link className="btn btn--primary" href="/faq">All FAQs</Link><a className="btn btn--outline" href={`https://wa.me/${settings.brand.whatsapp}`}>WhatsApp us</a></div></div>
+          <div className="btn-row"><Link className="btn btn--primary" href="/faq">All FAQs</Link><a className="btn btn--outline" href={`https://wa.me/${settings.brand.whatsapp}`}>WhatsApp us</a></div></div>
         <div>{faqs.slice(0, 4).map(f => <Acc key={f.id} q={f.question} a={f.answer} />)}</div>
       </div></section>
 

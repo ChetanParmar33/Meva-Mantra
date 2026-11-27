@@ -58,7 +58,7 @@ export function FaqList({ faqs }: { faqs: Faq[] }) {
   return (
     <>
       <div style={{ maxWidth: 520, marginBottom: 20 }}><label className="sr-only" htmlFor="faq-q">Search FAQs</label><input className="input" id="faq-q" type="search" placeholder="Search questions…" value={q} onChange={e => setQ(e.target.value)} /></div>
-      <div className="tabs" style={{ marginBottom: 10 }}>{['All', ...cats].map(c => <button key={c} className={`chip ${c === cur ? 'is-active' : ''}`} aria-pressed={c === cur} onClick={() => setCur(c)}>{c}</button>)}</div>
+      <div className="tabs tabs--scroll" style={{ marginBottom: 10 }}>{['All', ...cats].map(c => <button key={c} className={`chip ${c === cur ? 'is-active' : ''}`} aria-pressed={c === cur} onClick={() => setCur(c)}>{c}</button>)}</div>
       {!list.length ? <p className="muted">No matching questions. <a className="link" href="/contact">Ask us directly</a></p>
         : cur === 'All' && !q ? cats.map(c => <div key={c}><h3 style={{ marginTop: 30 }}>{c}</h3>{faqs.filter(f => f.category === c).map(f => <Acc key={f.id} q={f.question} a={f.answer} />)}</div>)
         : list.map(f => <Acc key={f.id} q={f.question} a={f.answer} />)}

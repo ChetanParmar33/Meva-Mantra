@@ -306,7 +306,7 @@ export function CheckoutView() {
                 </label>
               ))}
               {pay === 'COD' && q && <p className="note">Cash on Delivery doesn’t get the {settings.prepaidDiscountPct}% prepaid discount.</p>}
-              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 16 }}>
+              <div className="btn-row" style={{ marginTop: 16 }}>
                 <button className="btn btn--outline" onClick={() => setStep(2)}>Back</button>
                 <button className="btn btn--primary btn--lg" onClick={place} disabled={busy || !q || q.issues.length > 0}><Icon name="lock" size="sm" /> {busy ? 'Placing order…' : `Place order · ${q ? rupees(q.totalPaise) : ''}`}</button>
               </div>
@@ -347,7 +347,7 @@ function Success({ order }: { order: Placed }) {
         <div style={{ display: 'flex', gap: 20, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 24 }}>
           <div><small className="muted">Amount {order.paymentMode === 'COD' ? 'to pay on delivery' : 'paid'}</small><div className="price__now" style={{ fontSize: '1.4rem' }}>{rupees(order.totalPaise)}</div></div>
         </div>
-        <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+        <div className="btn-row btn-row--center">
           <Link className="btn btn--primary" href={`/track-order?number=${order.number}&phone=${order.phone}`}><Icon name="truck" size="sm" /> Track order</Link>
           <Link className="btn btn--outline" href="/account">View my orders</Link>
           <Link className="btn btn--outline" href="/shop">Continue shopping</Link>

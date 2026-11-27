@@ -89,7 +89,7 @@ export function ProductTabs({ tabs }: { tabs: { id: string; title: string; items
   return (
     <>
       <div className="sec-head"><div><span className="eyebrow">Shop the range</span><h2>Loved by thousands of families</h2></div><Link className="link" href={`/shop?c=${cur}`}>View all <Icon name="arrow" size="sm" /></Link></div>
-      <div className="tabs" role="tablist" style={{ marginBottom: 28 }}>{tabs.map(t => <button key={t.id} role="tab" aria-selected={t.id === cur} className={`chip ${t.id === cur ? 'is-active' : ''}`} onClick={() => setCur(t.id)}>{t.title}</button>)}</div>
+      <div className="tabs tabs--scroll" role="tablist" style={{ marginBottom: 28 }}>{tabs.map(t => <button key={t.id} role="tab" aria-selected={t.id === cur} className={`chip ${t.id === cur ? 'is-active' : ''}`} onClick={() => setCur(t.id)}>{t.title}</button>)}</div>
       <ProductGrid items={tab.items} />
     </>
   );
@@ -133,7 +133,7 @@ export function OtpLogin({ onDone, title = 'Login or sign up', compact }: { onDo
             <input id="otp-code" value={code} onChange={e => setCode(e.target.value.replace(/\D/g, '').slice(0, 6))} inputMode="numeric" autoComplete="one-time-code" maxLength={6} style={{ letterSpacing: '.5em', fontSize: '1.3rem', fontWeight: 800, maxWidth: 240 }} required />
             <span className="err" role="alert">{err}</span>
           </div>
-          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+          <div className="btn-row">
             <button className="btn btn--primary btn--lg" disabled={busy || code.length !== 6}>{busy ? 'Verifying…' : 'Verify & continue'}</button>
             <button type="button" className="btn btn--outline" disabled={busy} onClick={() => request()}>Resend code</button>
           </div>

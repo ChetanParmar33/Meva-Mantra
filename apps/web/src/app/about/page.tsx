@@ -17,7 +17,7 @@ export default async function About() {
       <section className="hero" style={{ padding: '40px 0' }}><div className="container split">
         <div><nav className="crumbs" aria-label="Breadcrumb"><Link href="/">Home</Link><Icon name="right" size="sm" /><span>Our Story</span></nav>
           <span className="eyebrow">Our story</span><h1>The mantra behind every muththi</h1>
-          <p className="muted" style={{ fontSize: '1.15rem' }}>{name} began in a family kitchen with one simple belief: the snacks we give our families should be as honest as the ones our grandmothers made.</p>
+          <p className="muted lead">{name} began in a family kitchen with one simple belief: the snacks we give our families should be as honest as the ones our grandmothers made.</p>
           <Link className="btn btn--primary btn--lg" href="/shop">Taste the difference</Link></div>
         <div className="hero__art"><Art hero={0} /></div>
       </div></section>

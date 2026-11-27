@@ -94,25 +94,25 @@ export default function ProductsPage() {
                 </select>
               </header>
               <div className="overflow-x-auto">
-                <table className="w-full min-w-[640px] text-sm">
+                <table className="w-full text-sm sm:min-w-[640px]">
                   <thead className="text-left text-xs uppercase tracking-wider text-muted">
-                    <tr><th className="px-5 py-2">Size</th><th className="px-2">SKU</th><th className="px-2">Price ₹</th><th className="px-2">MRP ₹</th><th className="px-2">Stock</th><th className="px-5" /></tr>
+                    <tr><th className="px-3 py-2 sm:px-5">Size</th><th className="hidden px-2 sm:table-cell">SKU</th><th className="px-1 sm:px-2">Price ₹</th><th className="px-1 sm:px-2">MRP ₹</th><th className="px-1 sm:px-2">Stock</th><th className="px-3 sm:px-5" /></tr>
                   </thead>
                   <tbody>
                     {p.variants.map((v) => {
                       const d = draftOf(v), dirty = isDirty(v);
                       return (
                         <tr key={v.id} className="border-t border-line">
-                          <td className="px-5 py-2.5 font-semibold">{v.title}</td>
-                          <td className="px-2 font-mono text-xs text-muted">{v.sku}</td>
-                          <td className="px-2"><input className="input w-24 py-1.5" inputMode="decimal" value={d.price} onChange={(e) => edit(v, 'price', e.target.value)} aria-label={`Price for ${v.sku}`} /></td>
-                          <td className="px-2"><input className="input w-24 py-1.5" inputMode="decimal" placeholder="—" value={d.mrp} onChange={(e) => edit(v, 'mrp', e.target.value)} aria-label={`MRP for ${v.sku}`} /></td>
-                          <td className="px-2">
-                            <input className={`input w-20 py-1.5 ${v.stock <= 0 ? 'border-red-300' : v.stock <= LOW_STOCK ? 'border-gold' : ''}`} inputMode="numeric" value={d.stock} onChange={(e) => edit(v, 'stock', e.target.value)} aria-label={`Stock for ${v.sku}`} />
+                          <td className="px-3 py-2.5 font-semibold sm:px-5">{v.title}</td>
+                          <td className="hidden px-2 font-mono text-xs text-muted sm:table-cell">{v.sku}</td>
+                          <td className="px-1 sm:px-2"><input className="input w-[4.5rem] px-2 py-1.5 sm:w-24 sm:px-3.5" inputMode="decimal" value={d.price} onChange={(e) => edit(v, 'price', e.target.value)} aria-label={`Price for ${v.sku}`} /></td>
+                          <td className="px-1 sm:px-2"><input className="input w-[4.5rem] px-2 py-1.5 sm:w-24 sm:px-3.5" inputMode="decimal" placeholder="—" value={d.mrp} onChange={(e) => edit(v, 'mrp', e.target.value)} aria-label={`MRP for ${v.sku}`} /></td>
+                          <td className="px-1 sm:px-2">
+                            <input className={`input w-14 px-2 py-1.5 sm:w-20 sm:px-3.5 ${v.stock <= 0 ? 'border-red-300' : v.stock <= LOW_STOCK ? 'border-gold' : ''}`} inputMode="numeric" value={d.stock} onChange={(e) => edit(v, 'stock', e.target.value)} aria-label={`Stock for ${v.sku}`} />
                           </td>
-                          <td className="px-5 text-right">
-                            {dirty ? <button className="btn-primary px-4 py-1.5" disabled={saving === v.id} onClick={() => save(v)}>{saving === v.id ? 'Saving…' : 'Save'}</button>
-                              : <span className="text-xs text-muted">{rupees(v.pricePaise)}{v.stock <= 0 ? ' · sold out' : ''}</span>}
+                          <td className="px-3 text-right sm:px-5">
+                            {dirty ? <button className="btn-primary px-3 py-1.5 sm:px-4" disabled={saving === v.id} onClick={() => save(v)}>{saving === v.id ? 'Saving…' : 'Save'}</button>
+                              : <span className="hidden text-xs text-muted sm:inline">{rupees(v.pricePaise)}{v.stock <= 0 ? ' · sold out' : ''}</span>}
                           </td>
                         </tr>
                       );
