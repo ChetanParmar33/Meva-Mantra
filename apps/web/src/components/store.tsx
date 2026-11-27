@@ -1,6 +1,6 @@
 'use client';
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import type { ArtMeta, Collection, ProductCard, Settings } from '@/lib/api';
+import type { Collection, ProductCard, Settings } from '@/lib/api';
 import type { ArtProduct } from '@/lib/art';
 import { api, type Quote } from '@/lib/client';
 import { Icon } from './icons';
@@ -42,7 +42,7 @@ function useStored<T>(key: string, initial: T, ready: boolean) {
   return [v, setV] as const;
 }
 
-export function StoreProvider({ settings, collections, products, artMeta, children }: { settings: Settings; collections: Collection[]; products: ProductCard[]; artMeta: ArtMeta; children: React.ReactNode }) {
+export function StoreProvider({ settings, collections, products, children }: { settings: Settings; collections: Collection[]; products: ProductCard[]; children: React.ReactNode }) {
   const [ready, setReady] = useState(false);
   useEffect(() => setReady(true), []);
   const [cart, setCart] = useStored<CartItem[]>('mm_cart', [], ready);
@@ -58,10 +58,9 @@ export function StoreProvider({ settings, collections, products, artMeta, childr
 
   const bySlug = useCallback((slug: string) => products.find(p => p.slug === slug), [products]);
   const artOf = useCallback<Store['artOf']>((p) => {
-    const m = artMeta[p.slug];
     const full = products.find(x => x.slug === p.slug);
-    return { slug: p.slug, title: p.title, type: p.type, art: p.art, variants: p.variants ?? full?.variants ?? [], ingredients: m?.ingredients, contains: m?.contains, highlights: m?.highlights };
-  }, [artMeta, products]);
+    return { slug: p.slug, title: p.title, type: p.type, art: p.art, variants: p.variants ?? full?.variants ?? [] };
+  }, [products]);
 
   const toast = useCallback((msg: string, icon = 'check') => {
     const id = ++tid.current;

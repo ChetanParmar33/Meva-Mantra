@@ -96,6 +96,7 @@ Cart lives in the browser (localStorage: `[{ variantId, qty }]`). The server is 
 | POST | `/cart/quote` | `QuoteInput` → `Quote` (no login needed) |
 | POST | `/checkout` | `QuoteInput & { address: AddressInput & { email }, giftMessage?, note?, saveAddress? }` — **requires `mm_user`** → `{ order:{ number, status, totalPaise }, payment: PaymentStart \| null }` (null for COD) |
 | POST | `/payments/razorpay/verify` | `{ orderNumber, razorpay_order_id, razorpay_payment_id, razorpay_signature }` → `{ ok, order:{number,status} }` |
+| POST | `/payments/razorpay/webhook` | Razorpay server-to-server events (`payment.captured`, `order.paid`, `payment.failed`). Header `X-Razorpay-Signature` = HMAC-SHA256(raw body, `RAZORPAY_WEBHOOK_SECRET`). Idempotent. A payment that arrives after the order was auto-cancelled is recorded as an order event for refund. |
 | POST | `/payments/demo/confirm` | `{ orderNumber }` → `{ ok, order }` (only when Razorpay keys are not configured and not in production) |
 | GET | `/orders/track?number=MM10001&phone=9876543210` | `TrackInfo` or 404 |
 

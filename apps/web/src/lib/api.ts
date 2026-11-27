@@ -1,6 +1,6 @@
 // Server-side data access (Server Components). Catalogue/content is cached for a few minutes.
 import { cacheLife, cacheTag } from 'next/cache';
-import type { ArtColors, ArtProduct } from './art';
+import type { ArtColors } from './art';
 
 export const API = process.env.API_URL ?? 'http://localhost:4100/api';
 
@@ -28,7 +28,6 @@ export type PostMeta = { slug: string; title: string; excerpt: string; tag: stri
 export type Post = PostMeta & { body: string };
 export type Policy = { slug: string; title: string; sections: { heading: string; body: string }[]; updatedAt: string };
 /** Extra per-product fields the SVG artwork needs (cards don't carry them). */
-export type ArtMeta = Record<string, { ingredients: string[]; contains: string[]; highlights: string[] }>;
 
 async function get<T>(path: string): Promise<T | null> {
   const res = await fetch(API + path);
@@ -45,19 +44,9 @@ export async function searchProducts(query: string) {
   'use cache'; cacheLife('minutes'); cacheTag('catalog');
   return (await get<{ items: ProductCard[]; total: number; page: number; pageSize: number }>(`/products?${query}`))!;
 }
-export async function getArtMeta(): Promise<ArtMeta> {
-  'use cache'; cacheLife('minutes'); cacheTag('catalog');
-  const all = await getAllProducts();
-  const details = await Promise.all(all.map(p => getProduct(p.slug)));
-  return Object.fromEntries(details.filter(Boolean).map(d => [d!.slug, { ingredients: d!.ingredients, contains: d!.contains, highlights: d!.highlights }]));
-}
 export async function getFaqs() { 'use cache'; cacheLife('minutes'); return (await get<Faq[]>('/faqs'))!; }
 export async function getPosts() { 'use cache'; cacheLife('minutes'); return (await get<PostMeta[]>('/posts'))!; }
 export async function getPost(slug: string) { 'use cache'; cacheLife('minutes'); return get<Post>(`/posts/${encodeURIComponent(slug)}`); }
 export async function getPolicies() { 'use cache'; cacheLife('minutes'); return (await get<{ slug: string; title: string }[]>('/policies'))!; }
 export async function getPolicy(slug: string) { 'use cache'; cacheLife('minutes'); return get<Policy>(`/policies/${encodeURIComponent(slug)}`); }
 
-export const toArt = (p: ProductCard, meta?: ArtMeta[string]): ArtProduct => ({
-  slug: p.slug, title: p.title, type: p.type, art: p.art, variants: p.variants,
-  ingredients: meta?.ingredients, contains: meta?.contains, highlights: meta?.highlights,
-});

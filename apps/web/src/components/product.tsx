@@ -1,28 +1,23 @@
 'use client';
 import Link from 'next/link';
-import { useId } from 'react';
 import type { ProductCard as Card } from '@/lib/api';
-import { hero, view, banner, type ArtProduct } from '@/lib/art';
+import type { ArtProduct } from '@/lib/art';
 import { pctOff, rupees } from '@/lib/format';
 import { Icon, Stars } from './icons';
 import { useStore } from './store';
 
 /** Uploaded photo if there is one, otherwise the generated SVG artwork. */
-export function ProductArt({ product, view: i = 0, variant = 0, image, alt }: { product: ArtProduct; view?: number; variant?: number; image?: string | null; alt?: string }) {
-  const id = useId();
-  if (image && i === 0) return <img src={image} alt={alt ?? product.title} loading="lazy" />;
-  return <div className="art" dangerouslySetInnerHTML={{ __html: view(product, i, variant, 'p' + id) }} />;
+// The artwork is served as cacheable SVG files from /art/... (see app/art/[...path]/route.ts) instead of
+// being inlined into the HTML, which kept pages heavy. Uploaded photos still take precedence.
+export function ProductArt({ product, view: i = 0, variant = 0, image, alt, eager }: { product: ArtProduct; view?: number; variant?: number; image?: string | null; alt?: string; eager?: boolean }) {
+  if (image && i === 0) return <img src={image} alt={alt ?? product.title} loading={eager ? 'eager' : 'lazy'} decoding="async" />;
+  return <img className="art-img" src={`/art/p/${encodeURIComponent(product.slug)}/${i}-${variant}.svg`} alt={alt ?? product.title} width={600} height={600} loading={eager ? 'eager' : 'lazy'} decoding="async" />;
 }
 export function HeroArt({ k }: { k: number }) {
-  const id = useId();
-  const { bySlug, artOf } = useStore();
-  return <div className="art" dangerouslySetInnerHTML={{ __html: hero(k, (slug) => { const p = bySlug(slug); return p && artOf(p); }, 'h' + id) }} />;
+  return <img className="art-img art-img--auto" src={`/art/hero/${k}.svg`} alt="Meva Mantra jars, Khajur Pak and gift boxes" width={700} height={560} loading={k === 0 ? 'eager' : 'lazy'} decoding="async" />;
 }
 export function BannerArt({ slug }: { slug: string }) {
-  const id = useId();
-  const { bySlug, artOf } = useStore();
-  const p = bySlug(slug);
-  return p ? <div className="art" dangerouslySetInnerHTML={{ __html: banner(artOf(p), 'b' + id) }} /> : null;
+  return <img className="art-img" src={`/art/banner/${encodeURIComponent(slug)}.svg`} alt="" width={800} height={450} loading="lazy" decoding="async" />;
 }
 export function CardArt({ p }: { p: Card }) {
   const { artOf } = useStore();

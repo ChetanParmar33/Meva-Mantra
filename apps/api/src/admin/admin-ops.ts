@@ -213,6 +213,7 @@ export class AdminOpsController {
     const r = await this.db.review.findUnique({ where: { id } });
     if (!r) throw new NotFoundException();
     await this.db.review.update({ where: { id }, data: { status: dto.status } });
+    if (r.status !== 'APPROVED' && dto.status !== 'APPROVED') return { ok: true }; // approved set unchanged
     // Rating shown on the store = average of approved reviews.
     const agg = await this.db.review.aggregate({ where: { productId: r.productId, status: 'APPROVED' }, _avg: { rating: true }, _count: true });
     await this.db.product.update({ where: { id: r.productId }, data: { ratingAvg: Math.round((agg._avg.rating ?? 0) * 10) / 10, ratingCount: agg._count } });

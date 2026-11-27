@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import Loading from '../../loading';
-import { NotFoundView } from '@/components/not-found-view';
 import { ProductView } from '@/components/product-view';
 import { getAllProducts, getProduct, getSettings } from '@/lib/api';
 
@@ -20,6 +20,7 @@ export async function generateMetadata({ params }: PageProps<'/products/[slug]'>
   };
 }
 
+// Unknown slugs get a real HTTP 404 from src/proxy.ts; notFound() below is the fallback.
 export default function ProductPage({ params }: PageProps<'/products/[slug]'>) {
   return <Suspense fallback={<Loading />}><ProductDetails params={params} /></Suspense>;
 }
@@ -27,7 +28,7 @@ export default function ProductPage({ params }: PageProps<'/products/[slug]'>) {
 async function ProductDetails({ params }: Pick<PageProps<'/products/[slug]'>, 'params'>) {
   const { slug } = await params;
   const [p, settings, all] = await Promise.all([getProduct(slug), getSettings(), getAllProducts()]);
-  if (!p) return <NotFoundView title="Product not found" text="It may have moved or sold out for good. Try our bestsellers instead." />;
+  if (!p) notFound();
   const site = process.env.SITE_URL ?? 'http://localhost:3100';
   const ld = {
     '@context': 'https://schema.org', '@type': 'Product', name: p.title, description: p.description, sku: p.slug,

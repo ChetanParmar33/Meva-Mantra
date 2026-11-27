@@ -6,7 +6,7 @@ import { UPLOAD_DIR } from './admin/admin.js';
 import { AppModule } from './app.module.js';
 import { rateLimit } from './common/rate-limit.js';
 
-const app = await NestFactory.create<NestExpressApplication>(AppModule);
+const app = await NestFactory.create<NestExpressApplication>(AppModule, { rawBody: true }); // rawBody: webhook signatures
 app.setGlobalPrefix('api');
 app.enableCors({ origin: (process.env.CORS_ORIGINS ?? '').split(',').map(s => s.trim()).filter(Boolean), credentials: true });
 app.useGlobalPipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true, transform: true }));

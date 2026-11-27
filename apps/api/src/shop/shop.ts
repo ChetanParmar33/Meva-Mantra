@@ -1,6 +1,6 @@
 import {
-  BadRequestException, Body, ConflictException, Controller, ForbiddenException, Get, HttpCode, Injectable, Module, NotFoundException,
-  OnModuleDestroy, OnModuleInit, Param, Post, Query, Req, ServiceUnavailableException, UseGuards,
+  BadRequestException, Body, ConflictException, Controller, ForbiddenException, Get, Headers, HttpCode, Injectable, Module, NotFoundException,
+  OnModuleDestroy, OnModuleInit, Param, Post, Query, Req, ServiceUnavailableException, UnauthorizedException, UseGuards, type RawBodyRequest,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Type } from 'class-transformer';
@@ -141,6 +141,25 @@ export class ShopController {
     return this.markPaid(pay.orderId, pay.id, dto.razorpay_payment_id);
   }
 
+  /** Razorpay → server notification (configure in Razorpay Dashboard → Webhooks: payment.captured, payment.failed).
+   *  Confirms the order even if the customer closed the browser before /payments/razorpay/verify ran. */
+  @Post('payments/razorpay/webhook')
+  @HttpCode(200)
+  async razorpayWebhook(@Req() req: RawBodyRequest<Request>, @Headers('x-razorpay-signature') signature?: string) {
+    const secret = process.env.RAZORPAY_WEBHOOK_SECRET;
+    if (!secret) throw new ServiceUnavailableException('Webhook is not configured');
+    if (!req.rawBody || !signature) throw new BadRequestException('Missing body or signature');
+    const expected = createHmac('sha256', secret).update(req.rawBody).digest('hex');
+    if (signature.length !== expected.length || !timingSafeEqual(Buffer.from(signature), Buffer.from(expected))) throw new UnauthorizedException('Invalid signature');
+    const evt = JSON.parse(req.rawBody.toString('utf8')) as { event?: string; payload?: { payment?: { entity?: { id: string; order_id?: string; method?: string } } } };
+    const p = evt.payload?.payment?.entity;
+    const pay = p?.order_id ? await this.db.payment.findUnique({ where: { providerOrderId: p.order_id } }) : null;
+    if (!p || !pay) return { ok: true, ignored: true }; // not ours / unknown: acknowledge so Razorpay stops retrying
+    if (evt.event === 'payment.captured' || evt.event === 'order.paid') await this.markPaid(pay.orderId, pay.id, p.id, p.method);
+    else if (evt.event === 'payment.failed' && pay.status === 'CREATED') await this.db.payment.update({ where: { id: pay.id }, data: { status: 'FAILED', providerPaymentId: p.id, method: p.method } });
+    return { ok: true };
+  }
+
   @Post('payments/demo/confirm')
   @HttpCode(200)
   @UseGuards(CustomerGuard)
@@ -169,6 +188,11 @@ export class ShopController {
     const order = await this.db.$transaction(async (tx) => {
       if (paymentId) await tx.payment.update({ where: { id: paymentId }, data: { status: 'CAPTURED', providerPaymentId, method } });
       const cur = await tx.order.findUniqueOrThrow({ where: { id: orderId } });
+      if (cur.status === 'CANCELLED') {
+        // Money arrived after the 30-minute auto-cancel released the stock: flag it for a refund / manual re-confirm.
+        await tx.orderEvent.create({ data: { orderId, status: 'CANCELLED', note: `Payment ${providerPaymentId} received after the order was cancelled. Refund it, or re-confirm manually if stock allows.` } });
+        return cur;
+      }
       if (cur.status !== 'PENDING_PAYMENT') return cur;
       return tx.order.update({ where: { id: orderId }, data: { status: 'CONFIRMED', events: { create: { status: 'CONFIRMED', note: 'Payment received' } } } });
     });

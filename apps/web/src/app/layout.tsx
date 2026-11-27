@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { DM_Sans, Fraunces } from 'next/font/google';
 import { Footer, Header, Overlays } from '@/components/chrome';
 import { StoreProvider } from '@/components/store';
-import { getAllProducts, getArtMeta, getCollections, getSettings } from '@/lib/api';
+import { getAllProducts, getCollections, getSettings } from '@/lib/api';
 import './globals.css';
 
 const sans = DM_Sans({ subsets: ['latin'], variable: '--font-dm-sans' });
@@ -16,11 +16,11 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: LayoutProps<'/'>) {
-  const [settings, collections, products, artMeta] = await Promise.all([getSettings(), getCollections(), getAllProducts(), getArtMeta()]);
+  const [settings, collections, products] = await Promise.all([getSettings(), getCollections(), getAllProducts()]);
   return (
     <html lang="en" className={`${sans.variable} ${serif.variable}`}>
       <body>
-        <StoreProvider settings={settings} collections={collections} products={products} artMeta={artMeta}>
+        <StoreProvider settings={settings} collections={collections} products={products}>
           <Header />
           <main id="main">{children}</main>
           <Footer />

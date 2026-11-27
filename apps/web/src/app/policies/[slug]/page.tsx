@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import Loading from '../../loading';
-import { NotFoundView } from '@/components/not-found-view';
 import { PageHero } from '@/components/page-hero';
 import { getPolicies, getPolicy, getSettings } from '@/lib/api';
 import { fmtDate } from '@/lib/format';
@@ -14,6 +14,7 @@ export async function generateMetadata({ params }: PageProps<'/policies/[slug]'>
   return p ? { title: p.title, alternates: { canonical: `/policies/${p.slug}` } } : { title: 'Policy not found', robots: { index: false } };
 }
 
+// Unknown slugs get a real HTTP 404 from src/proxy.ts; notFound() below is the fallback.
 export default function PolicyPage({ params }: PageProps<'/policies/[slug]'>) {
   return <Suspense fallback={<Loading />}><Policy params={params} /></Suspense>;
 }
@@ -21,7 +22,7 @@ export default function PolicyPage({ params }: PageProps<'/policies/[slug]'>) {
 async function Policy({ params }: Pick<PageProps<'/policies/[slug]'>, 'params'>) {
   const { slug } = await params;
   const [p, all, { brand }] = await Promise.all([getPolicy(slug), getPolicies(), getSettings()]);
-  if (!p) return <NotFoundView title="Policy not found" />;
+  if (!p) notFound();
   return (
     <>
       <PageHero title={p.title} sub="Clear, simple and fair: the way it should be." crumb="Policies" />

@@ -23,7 +23,8 @@
 - [ ] `CORS_ORIGINS=https://mevamantra.in,https://admin.mevamantra.in`, `PUBLIC_URL=https://api.mevamantra.in`
 - [ ] Website/admin: `NEXT_PUBLIC_API_URL=https://api.mevamantra.in/api`; website server-side `API_URL=http://127.0.0.1:4100/api`
 - [ ] `SMTP_URL` + `MAIL_FROM` set karo (email OTP aur order emails ke liye)
-- [ ] Razorpay **live** keys (`RAZORPAY_KEY_ID/SECRET`). Pehle test keys se ek poora order test karo. Live se pehle Razorpay webhook (`payment.captured`) jodna better hai. Abhi verification browser callback se hoti hai.
+- [ ] Razorpay **live** keys (`RAZORPAY_KEY_ID/SECRET`). Pehle test keys se ek poora order test karo.
+- [ ] Razorpay Dashboard → Webhooks: URL `https://api.mevamantra.in/api/payments/razorpay/webhook`, events `payment.captured`, `payment.failed`, ek secret banao aur wahi `RAZORPAY_WEBHOOK_SECRET` mein daalo. Isse customer browser band kar de tab bhi order confirm hota hai.
 - [ ] Demo data hatao: reviews/ratings (Admin → Reviews), placeholder phone/email/address (Admin → Settings), "50,000+ jars" jaise numbers
 - [ ] Policies apne asli business rules ke hisaab se final karo
 - [ ] Database password badlo; Postgres sirf `127.0.0.1` par (docker-compose already aisa hai)

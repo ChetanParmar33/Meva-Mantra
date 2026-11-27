@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import Loading from '../../loading';
 import { Art } from '@/components/bits';
 import { Icon } from '@/components/icons';
-import { NotFoundView } from '@/components/not-found-view';
 import { BannerArt } from '@/components/product';
 import { getAllProducts, getPost, getPosts, getSettings } from '@/lib/api';
 import { fmtDate, rupees } from '@/lib/format';
@@ -16,6 +16,7 @@ export async function generateMetadata({ params }: PageProps<'/blog/[slug]'>): P
   return p ? { title: p.title, description: p.excerpt, alternates: { canonical: `/blog/${p.slug}` }, openGraph: { type: 'article', title: p.title, description: p.excerpt } } : { title: 'Article not found', robots: { index: false } };
 }
 
+// Unknown slugs get a real HTTP 404 from src/proxy.ts; notFound() below is the fallback.
 export default function PostPage({ params }: PageProps<'/blog/[slug]'>) {
   return <Suspense fallback={<Loading />}><Post params={params} /></Suspense>;
 }
@@ -23,7 +24,7 @@ export default function PostPage({ params }: PageProps<'/blog/[slug]'>) {
 async function Post({ params }: Pick<PageProps<'/blog/[slug]'>, 'params'>) {
   const { slug } = await params;
   const [post, posts, products, { brand }] = await Promise.all([getPost(slug), getPosts(), getAllProducts(), getSettings()]);
-  if (!post) return <NotFoundView title="Article not found" />;
+  if (!post) notFound();
   const prod = products.find(p => p.slug === post.coverSlug);
   const ld = { '@context': 'https://schema.org', '@type': 'BlogPosting', headline: post.title, description: post.excerpt, datePublished: post.publishedAt, author: { '@type': 'Organization', name: brand.name } };
   return (

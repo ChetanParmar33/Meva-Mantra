@@ -10,8 +10,9 @@ export type ArtProduct = {
 };
 
 const DEFAULT_ART: ArtColors = { label: '#1F4D3A', accent: '#C9A227', bg: '#F3EBD6' };
-const SERIF = 'style="font-family:var(--serif)"';
-const SANS = 'style="font-family:var(--sans)"';
+// Fallback fonts matter when the SVG is shown via <img> (page CSS variables and web fonts are not available there).
+const SERIF = 'style="font-family:var(--serif, Georgia, \'Times New Roman\', serif)"';
+const SANS = 'style="font-family:var(--sans, \'Helvetica Neue\', Arial, sans-serif)"';
 
 let prefix = 'a', n = 0;
 const uid = () => prefix + (++n).toString(36);
