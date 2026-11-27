@@ -7,7 +7,7 @@
 ## 1. What this is
 
 D2C dry fruit store **Meva Mantra**, tagline *"Roz ki muththi, sehat ki kunji"*. Green + Gold theme: `#1F4D3A` green, `#C9A227` gold, `#FBF7EF` cream.
-22 products (jars, khajur pak, combos, gift hampers) in 9 collections. **The website is the priority**; the admin panel can stay basic.
+25 products: **7 live** (Dry Fruit Mix, Badam, Kaju, Kishmish, Snack Mix, Dry Fruit Khajur Pak, Dry Fruit Mix + Khajur Pak Combo) and **18 coming soon** (shown only in admin). 11 collections. **The website is the priority**; the admin panel can stay basic.
 
 ## 2. Owner preferences (always follow)
 
@@ -76,7 +76,7 @@ apps/admin/src/
   app/login/                      admin login
   components/                     product-edit.tsx, product-form.tsx, variant-row.tsx, order-detail.tsx, ui.tsx
   lib/api.ts                      fetch helper, STORE_URL
-docs/                             API.md (endpoint contract), DEPLOY.md (go-live checklist), PRODUCT_PHOTOS.md (photo list)
+docs/                             API.md (endpoint contract), DEPLOY.md (go-live checklist), PRODUCT_PHOTOS.md (image guide: how many images per product, sizes, AI prompts)
 ```
 
 ## 6. How the system works
@@ -90,6 +90,9 @@ docs/                             API.md (endpoint contract), DEPLOY.md (go-live
 - **Product images:** generated SVG art at `/art/p/<slug>/<view>-<variant>.svg` (cacheable). An uploaded photo (admin, ≤3 MB JPG/PNG/WebP, file signature checked, stored in `apps/api/uploads/`, not in git) replaces **only the main image (view 0)**. Gallery views 1–3 stay artwork; no per-colour photos yet.
 - Store catalogue pages are cached about 60 s, so admin edits show on the store within about a minute.
 - Stock counts are never exposed publicly.
+- **Product status:** only `ACTIVE` (admin label "Live") is public. `COMING_SOON`, `DRAFT`, `ARCHIVED` are hidden everywhere on the store (API filters `status: 'ACTIVE'` in catalogue, detail, related, reviews, quote) and 404 by URL; collections with no live product are hidden too. To launch a coming-soon product: Admin → Products → status "Live".
+- Artwork for a hidden product is not served. `<Art slug={[preferred, fallback…]} />` and the hero scenes in `lib/art.ts` take slugs in order of preference and draw the first live one, so hiding products never leaves empty boxes. Blog covers (`Post.coverSlug`) must point at live products.
+- Seed (`seed-data.json`) holds each product's `status` (default active); re-running `pnpm seed` resets catalogue fields, prices and statuses to the seed values.
 
 ## 7. Gotchas (learned the hard way)
 
@@ -122,14 +125,15 @@ docs/                             API.md (endpoint contract), DEPLOY.md (go-live
 
 _Last updated: 2026-11-27_
 
-- **Done:** website, admin, API, docs; mobile polish; same-origin `/api` proxy (phones on Wi-Fi); Gooku agent. Local DB = clean seed (0 orders, next order MM10001).
-- **Needs owner input:** product photos (`docs/PRODUCT_PHOTOS.md`); real contact details (Admin → Settings); remove demo reviews, ratings and stats; final policies; FSSAI (and GST) number on the site; final prices and stock.
+- **Done:** website, admin, API, docs; mobile polish; same-origin `/api` proxy (phones on Wi-Fi); Gooku agent; launch list (7 live, 18 coming soon, new Badam/Kaju/Kishmish in a new "Dry Fruits" category). Local DB = clean seed (0 orders, next order MM10001).
+- **Needs owner input:** confirm Badam/Kaju/Kishmish prices (placeholders, no MRP), descriptions and shelf life; product photos (`docs/PRODUCT_PHOTOS.md`, launch 7 first); real contact details (Admin → Settings); remove demo reviews, ratings and stats; final policies; FSSAI (and GST) number on the site; final prices and stock.
 - **Go-live:** domain, server, Razorpay live keys + webhook, SMTP email, production env, daily backups (`docs/DEPLOY.md`).
 - **Optional:** multi-photo gallery and per-colour photos; Google Analytics + Search Console; admin mobile polish.
 - **Skipped on purpose (paid):** SMS OTP, Shiprocket, WhatsApp Business API.
 
 ## 11. Decisions (newest first, one dated line each)
 
+- 2026-11-27: Launch with 7 products (Dry Fruit Mix, Badam, Kaju, Kishmish, Snack Mix, Khajur Pak, Mix + Khajur Pak Combo); the other 18 are COMING_SOON: hidden from the store, visible in admin with a "Coming soon" tag.
 - 2026-11-27: Gooku agent created: this file is its memory, `.claude/skills/gooku/SKILL.md` its boot routine.
 - 2026-11-27: Generic stock product photos rejected by the owner and reverted; wait for own photos.
 - 2026-11-27: Browser → API through a same-origin `/api` proxy (first-party cookies, works over LAN).

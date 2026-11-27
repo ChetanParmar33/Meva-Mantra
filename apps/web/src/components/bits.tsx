@@ -2,11 +2,13 @@
 import { HeroArt, ProductArt } from './product';
 import { useStore } from './store';
 
-/** Artwork for a product looked up by slug (server pages only know slugs). */
-export function Art({ slug, view = 0, hero }: { slug?: string; view?: number; hero?: number }) {
-  const { bySlug, artOf } = useStore();
+/** Artwork for a product looked up by slug (server pages only know slugs).
+ *  Pass several slugs in order of preference: the first live one wins, else the first live product,
+ *  so hiding a product (coming soon) never leaves an empty box. */
+export function Art({ slug, view = 0, hero }: { slug?: string | (string | undefined)[]; view?: number; hero?: number }) {
+  const { bySlug, artOf, products } = useStore();
   if (hero != null) return <HeroArt k={hero} />;
-  const p = slug ? bySlug(slug) : undefined;
+  const p = slug ? [slug].flat().map(s => s && bySlug(s)).find(Boolean) || products[0] : undefined;
   return p ? <ProductArt product={artOf(p)} view={view} image={view === 0 ? p.image : null} /> : null;
 }
 

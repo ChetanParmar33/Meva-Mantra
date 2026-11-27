@@ -111,6 +111,7 @@ enum ProductType {
 
 enum ProductStatus {
   ACTIVE
+  COMING_SOON // shown only in admin, hidden from the store
   DRAFT
   ARCHIVED
 }

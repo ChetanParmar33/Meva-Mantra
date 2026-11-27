@@ -1,10 +1,12 @@
 'use client';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
+import { STATUS_LABEL, StatusOptions } from '@/components/product-form';
+import { Badge } from '@/components/ui';
 import { api, rupees, STORE_URL } from '@/lib/api';
 
 type Variant = { id: string; title: string; sku: string; pricePaise: number; mrpPaise: number | null; stock: number };
-type Product = { id: string; slug: string; title: string; type: string; status: 'ACTIVE' | 'DRAFT' | 'ARCHIVED'; collections: { slug: string; title: string }[]; images: { url: string }[]; variants: Variant[] };
+type Product = { id: string; slug: string; title: string; type: string; status: keyof typeof STATUS_LABEL; collections: { slug: string; title: string }[]; images: { url: string }[]; variants: Variant[] };
 type Draft = { price: string; mrp: string; stock: string };
 
 const LOW_STOCK = 10;
@@ -52,7 +54,7 @@ export default function ProductsPage() {
     try {
       await api(`/admin/products/${p.id}`, { method: 'PATCH', body: JSON.stringify({ status }) });
       setProducts((ps) => ps!.map((x) => (x.id === p.id ? { ...x, status } : x)));
-      setMsg({ ok: true, text: `${p.title} is now ${status.toLowerCase()}` });
+      setMsg({ ok: true, text: `${p.title} is now ${STATUS_LABEL[status].toLowerCase()}` });
     } catch (e) { setMsg({ ok: false, text: (e as Error).message }); }
   }
 
@@ -84,13 +86,13 @@ export default function ProductsPage() {
                 <div className="flex items-center gap-3">
                   {p.images[0] ? <img src={p.images[0].url} alt="" className="h-11 w-11 rounded-lg object-cover" /> : <span className="h-11 w-11 rounded-lg bg-sage" aria-hidden="true" />}
                   <div>
-                    <Link href={`/products/${p.id}`} className="font-serif text-lg font-semibold text-green-900 hover:underline">{p.title}</Link>
+                    <Link href={`/products/${p.id}`} className="font-serif text-lg font-semibold text-green-900 hover:underline">{p.title}</Link>{p.status === 'COMING_SOON' && <> <Badge value="COMING_SOON" /></>}
                     <p className="text-xs text-muted">{p.collections.map((c) => c.title).join(' · ')}{p.status === 'ACTIVE' && <> · <a href={`${STORE_URL}/products/${p.slug}`} target="_blank" className="underline">store ↗</a></>}</p>
                   </div>
                 </div>
                 <select value={p.status} onChange={(e) => setStatus(p, e.target.value as Product['status'])} aria-label={`Status of ${p.title}`}
-                  className={`rounded-full border-[1.5px] px-3 py-1.5 text-xs font-bold ${p.status === 'ACTIVE' ? 'border-green text-green' : 'border-line text-muted'}`}>
-                  <option value="ACTIVE">Live</option><option value="DRAFT">Draft</option><option value="ARCHIVED">Archived</option>
+                  className={`rounded-full border-[1.5px] px-3 py-1.5 text-xs font-bold ${p.status === 'ACTIVE' ? 'border-green text-green' : p.status === 'COMING_SOON' ? 'border-gold text-gold-d' : 'border-line text-muted'}`}>
+                  <StatusOptions />
                 </select>
               </header>
               <div className="overflow-x-auto">

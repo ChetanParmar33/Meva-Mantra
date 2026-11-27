@@ -4,7 +4,7 @@ import './env.js';
 import { readFileSync } from 'node:fs';
 import { createPrisma } from './common/prisma.service.js';
 import { hashPassword } from './common/password.js';
-import type { ProductType } from './generated/prisma/client.js';
+import type { ProductStatus, ProductType } from './generated/prisma/client.js';
 
 const data = JSON.parse(readFileSync(new URL('../prisma/seed-data.json', import.meta.url), 'utf8'));
 const db = createPrisma();
@@ -37,7 +37,7 @@ async function main() {
   // products + variants (demo stock: 50 for available sizes, 0 for sold out)
   for (const [i, p] of PRODUCTS.entries()) {
     const base = {
-      title: p.title, type: p.type.toUpperCase() as ProductType, short: p.short, description: p.desc,
+      title: p.title, type: p.type.toUpperCase() as ProductType, status: (p.status ?? 'active').toUpperCase() as ProductStatus, short: p.short, description: p.desc,
       ingredients: p.ingredients ?? [], highlights: p.highlights ?? [], contains: p.contains ?? [],
       shelfLife: p.shelf, optionName: p.option ?? 'Size', limitedNote: p.limited ?? null, art: p.art,
       ratingAvg: p.rating, ratingCount: p.reviews, sortOrder: i,

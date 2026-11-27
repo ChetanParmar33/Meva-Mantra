@@ -300,13 +300,14 @@ export function view(p: ArtProduct, i = 0, variant = 0, idPrefix = 'v') {
 export function hero(k: number, find: (slug: string) => ArtProduct | undefined, idPrefix = 'h') {
   begin(idPrefix);
   const r = rng('hero' + k);
-  const j = (slug: string, x: number, y: number, s: number) => { const p = find(slug); return p ? `<g transform="translate(${x} ${y}) scale(${s})">${object(p).svg}</g>` : ''; };
+  // Slugs in order of preference: the first live product is drawn (others may be hidden / coming soon).
+  const j = (slugs: string | string[], x: number, y: number, s: number) => { const p = [slugs].flat().map(find).find(Boolean); return p ? `<g transform="translate(${x} ${y}) scale(${s})">${object(p).svg}</g>` : ''; };
   const ings = find('mix-dryfruit')?.ingredients;
   const bg = `<circle cx="360" cy="300" r="250" fill="#C9A227" opacity=".16"/><circle cx="360" cy="300" r="250" fill="none" stroke="#C9A227" stroke-width="2" stroke-dasharray="2 10"/>`;
   let inner = '';
-  if (k === 0) inner = `${leaf(90, 120, -40, 1.3)}${leaf(560, 90, 210, 1)}${j('masala-dryfruit-mix', 90, 190, 0.92)}${j('classic-granola', 420, 190, 0.92)}${j('mix-dryfruit', 245, 110, 1.08)}<g transform="translate(40 410)">${bowl(r, shapesFor(ings), 210)}</g>${scatter(r, ['almond', 'cashew', 'pista', 'cran'], 8, 300, 500, 330, 40, 1.4, 1.8)}`;
-  if (k === 1) inner = `${leaf(560, 110, 210, 1.2)}${leaf(80, 140, -30, 1)}${j('dryfruit-khajur-pak', 90, 120, 0.95)}${j('khajur-pak-gifting-box-3', 280, 250, 1.05)}${scatter(r, ['date', 'almond', 'pista', 'cashew'], 10, 80, 500, 560, 40, 1.4, 1.9)}`;
-  if (k === 2) inner = `${leaf(80, 120, -30, 1.2)}${leaf(580, 420, 160, 1)}${j('khajur-pak-gifting-box-4', 40, 250, 0.8)}${j('diwali-gift-hamper', 330, 150, 1.05)}${scatter(r, ['almond', 'cashew', 'date', 'pista'], 8, 120, 505, 500, 30, 1.4, 1.8)}`;
+  if (k === 0) inner = `${leaf(90, 120, -40, 1.3)}${leaf(560, 90, 210, 1)}${j(['masala-dryfruit-mix', 'dry-fruit-snack-mix'], 90, 190, 0.92)}${j(['classic-granola', 'kaju'], 420, 190, 0.92)}${j('mix-dryfruit', 245, 110, 1.08)}<g transform="translate(40 410)">${bowl(r, shapesFor(ings), 210)}</g>${scatter(r, ['almond', 'cashew', 'pista', 'cran'], 8, 300, 500, 330, 40, 1.4, 1.8)}`;
+  if (k === 1) inner = `${leaf(560, 110, 210, 1.2)}${leaf(80, 140, -30, 1)}${j('dryfruit-khajur-pak', 90, 120, 0.95)}${j(['khajur-pak-gifting-box-3', 'mix-dryfruit'], 280, 250, 1.05)}${scatter(r, ['date', 'almond', 'pista', 'cashew'], 10, 80, 500, 560, 40, 1.4, 1.9)}`;
+  if (k === 2) inner = `${leaf(80, 120, -30, 1.2)}${leaf(580, 420, 160, 1)}${j(['khajur-pak-gifting-box-4', 'mix-dryfruit-khajur-pak-combo'], 40, 250, 0.8)}${j(['diwali-gift-hamper', 'dryfruit-khajur-pak'], 330, 150, 1.05)}${scatter(r, ['almond', 'cashew', 'date', 'pista'], 8, 120, 505, 500, 30, 1.4, 1.8)}`;
   return `<svg viewBox="0 0 700 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Meva Mantra products">${bg}${inner}</svg>`;
 }
 

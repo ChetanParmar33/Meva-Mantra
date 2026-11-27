@@ -35,7 +35,7 @@ export default async function Home() {
         <div className="cat-grid">
           {collections.filter(c => c.kind === 'CATEGORY').map(c => (
             <Link key={c.slug} className="cat-card" href={`/shop?c=${c.slug}`}>
-              <div className="cat-card__media"><Art slug={CAT_ART[c.slug] ?? 'mix-dryfruit'} /></div>
+              <div className="cat-card__media"><Art slug={[CAT_ART[c.slug], ...inColl(c.slug).map(p => p.slug)]} /></div>
               <h3>{c.title}</h3><p>{c.blurb}</p>
             </Link>
           ))}
@@ -43,7 +43,7 @@ export default async function Home() {
       </div></section>
 
       <section className="section" style={{ paddingTop: 20 }}><div className="container">
-        <ProductTabs tabs={[{ id: 'bestseller', title: 'Bestsellers', items: inColl('bestseller') }, { id: 'new', title: 'New Arrivals', items: inColl('new') }, { id: 'combos', title: 'Combos', items: inColl('combos') }, { id: 'gifting', title: 'Gifting', items: inColl('gifting') }]} />
+        <ProductTabs tabs={[{ id: 'bestseller', title: 'Bestsellers', items: inColl('bestseller') }, { id: 'new', title: 'New Arrivals', items: inColl('new') }, { id: 'combos', title: 'Combos', items: inColl('combos') }, { id: 'gifting', title: 'Gifting', items: inColl('gifting') }].filter(t => t.items.length)} />
       </div></section>
 
       {spot && (

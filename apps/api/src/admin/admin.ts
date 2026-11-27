@@ -109,7 +109,7 @@ export class AdminAuthController {
 /* ---------- products ---------- */
 
 const TYPES = ['JAR', 'BOX', 'COMBO', 'HAMPER', 'PURSE', 'CARD'] as const;
-const STATUSES = ['ACTIVE', 'DRAFT', 'ARCHIVED'] as const;
+const STATUSES = ['ACTIVE', 'COMING_SOON', 'DRAFT', 'ARCHIVED'] as const;
 
 class VariantDto {
   @IsString() @MinLength(1) @MaxLength(60) title!: string;

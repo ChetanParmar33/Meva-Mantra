@@ -11,7 +11,7 @@ Uploaded product images are served from `/uploads/<file>` (relative when `PUBLIC
 |---|---|---|
 | GET | `/health` | `{ ok, time }` |
 | GET | `/settings` | `{ brand:{name,tagline,phone,whatsapp,email,address,hours}, prepaidDiscountPct, freeShippingAbovePaise, shippingFeePaise, giftWrapPaise }` |
-| GET | `/collections` | `[{ slug, title, description, blurb, kind:'CATEGORY'\|'COLLECTION', _count:{products} }]` |
+| GET | `/collections` | `[{ slug, title, description, blurb, kind:'CATEGORY'\|'COLLECTION', _count:{products} }]`. Only collections with at least one live product. |
 | GET | `/products?collection=&q=&sort=&availability=in\|out&minPrice=&maxPrice=&page=&pageSize=` | `{ items: ProductCard[], total, page, pageSize }` (prices in query are **rupees**) |
 | GET | `/products/:slug` | `ProductDetail` (404 if missing) |
 | GET | `/pincode/:pin` | `{ pincode, serviceable, state, city, etaMinDays, etaMaxDays, cod }` (400 if not 6 digits) |
@@ -128,7 +128,7 @@ Rules: shipping free when subtotal ≥ `freeShippingAbovePaise`, else `shippingF
 | GET | `/admin/stats` | `{ products, active, outOfStock (ACTIVE products only), orders, newEnquiries, pendingReviews, revenuePaise, todayOrders, ordersToShip }` |
 | GET | `/admin/products` | list with variants (existing) |
 | GET | `/admin/products/:id` | full product incl. images, variants, collection slugs |
-| POST | `/admin/products` | `{ slug, title, type, short, description, ingredients[], highlights[], contains[], shelfLife?, optionName?, collections: string[], status?, variants:[{title, sku, pricePaise, mrpPaise?, stock, swatch?}] }` |
+| POST | `/admin/products` | `{ slug, title, type, short, description, ingredients[], highlights[], contains[], shelfLife?, optionName?, collections: string[], status?: 'ACTIVE'\|'COMING_SOON'\|'DRAFT'\|'ARCHIVED' (default DRAFT; only ACTIVE is public), variants:[{title, sku, pricePaise, mrpPaise?, stock, swatch?}] }` |
 | PATCH | `/admin/products/:id` | any of the fields above except variants; `collections` replaces the set; `art: { label, accent, bg }` (hex) sets the generated-artwork colours |
 | POST | `/admin/products/:id/variants` | `{ title, sku, pricePaise, mrpPaise?, stock, swatch? }` |
 | PATCH | `/admin/variants/:id` | `{ title?, pricePaise?, mrpPaise?, stock?, swatch? }` (existing, extended) |

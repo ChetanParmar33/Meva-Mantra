@@ -4,7 +4,9 @@ import { Field, TagInput } from '@/components/ui';
 import { api } from '@/lib/api';
 
 export const TYPES = ['JAR', 'BOX', 'COMBO', 'HAMPER', 'PURSE', 'CARD'] as const;
-export const STATUSES = ['ACTIVE', 'DRAFT', 'ARCHIVED'] as const;
+export const STATUSES = ['ACTIVE', 'COMING_SOON', 'DRAFT', 'ARCHIVED'] as const;
+export const STATUS_LABEL: Record<(typeof STATUSES)[number], string> = { ACTIVE: 'Live', COMING_SOON: 'Coming soon', DRAFT: 'Draft', ARCHIVED: 'Archived' };
+export const StatusOptions = () => <>{STATUSES.map((s) => <option key={s} value={s}>{STATUS_LABEL[s]}</option>)}</>;
 export type ProductFields = {
   slug: string; title: string; type: (typeof TYPES)[number]; status: (typeof STATUSES)[number]; short: string; description: string;
   ingredients: string[]; highlights: string[]; contains: string[]; shelfLife: string; optionName: string; limitedNote: string;
@@ -44,9 +46,9 @@ export function ProductFieldsForm({ value, onChange, isNew }: { value: ProductFi
             {TYPES.map((t) => <option key={t} value={t}>{t.charAt(0) + t.slice(1).toLowerCase()}</option>)}
           </select>
         </Field>
-        <Field label="Status" hint="Draft = hidden from the store">
+        <Field label="Status" hint="Only Live shows on the store. Coming soon = admin only">
           <select className="input" value={value.status} onChange={(e) => set('status', e.target.value as ProductFields['status'])}>
-            <option value="ACTIVE">Live</option><option value="DRAFT">Draft</option><option value="ARCHIVED">Archived</option>
+            <StatusOptions />
           </select>
         </Field>
         <div className="md:col-span-2"><Field label="Short line" hint={counter(value.short, 300)}><input className="input" required maxLength={300} value={value.short} onChange={(e) => set('short', e.target.value)} /></Field></div>

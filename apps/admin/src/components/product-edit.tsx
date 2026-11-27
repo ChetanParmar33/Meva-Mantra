@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useParams, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { ProductFieldsForm, toPayload, type ProductFields } from '@/components/product-form';
-import { FlashBar, PageHead, Skeleton, useFlash } from '@/components/ui';
+import { Badge, FlashBar, PageHead, Skeleton, useFlash } from '@/components/ui';
 import { emptyVariant, variantBody, VariantHead, VariantInputs, type VariantDraft } from '@/components/variant-row';
 import { api, json, STORE_URL, toRs } from '@/lib/api';
 
@@ -78,6 +78,7 @@ export function ProductEdit() {
   return (
     <form onSubmit={(e) => { e.preventDefault(); run('save', () => api(`/admin/products/${id}`, json('PATCH', toPayload(f))), 'Product saved'); }}>
       <PageHead eyebrow="Edit product" title={p.title}>
+        {p.status === 'COMING_SOON' && <Badge value="COMING_SOON" />}
         <Link href="/products" className="btn-outline">← Products</Link>
         {p.status === 'ACTIVE' && <a href={`${STORE_URL}/products/${p.slug}`} target="_blank" className="btn-outline">View on store ↗</a>}
         <button className="btn-primary" disabled={busy === 'save'}>{busy === 'save' ? 'Saving…' : 'Save details'}</button>

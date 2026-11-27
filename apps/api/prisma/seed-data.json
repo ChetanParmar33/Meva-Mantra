@@ -41,6 +41,12 @@
    "color": "#C9A227"
   },
   {
+   "id": "dry-fruits",
+   "title": "Dry Fruits",
+   "blurb": "Whole badam, kaju & kishmish",
+   "color": "#8C5A1E"
+  },
+  {
    "id": "roasted",
    "title": "Roasted & Masala",
    "blurb": "Savoury, crunchy, guilt-free",
@@ -91,6 +97,11 @@
    "id": "mixes",
    "title": "Dry Fruit Mixes",
    "desc": "Premium nuts, seeds and berries, small-batch roasted in pure cow ghee."
+  },
+  {
+   "id": "dry-fruits",
+   "title": "Dry Fruits",
+   "desc": "Whole badam, kaju and kishmish: hand-sorted, nothing added, packed fresh."
   },
   {
    "id": "roasted",
@@ -181,105 +192,147 @@
    ]
   },
   {
-   "id": "dryfruit-khajur-pak",
-   "title": "Dry Fruit Khajur Pak",
-   "type": "box",
+   "id": "badam",
+   "title": "Badam",
+   "type": "jar",
    "cats": [
-    "khajur",
-    "bestseller"
+    "dry-fruits",
+    "new"
    ],
-   "short": "Ghar-jaisa Khajur Pak, sweetened only with dates & honey.",
+   "short": "Whole, crunchy almonds, hand-sorted and packed fresh.",
    "art": {
-    "label": "#6B3F22",
+    "label": "#7A4A2A",
     "accent": "#C9A227",
-    "bg": "#F1E2CF"
+    "bg": "#F3E6D3"
    },
    "variants": [
     {
-     "t": "400 g",
-     "p": 549,
-     "mrp": 600,
-     "sku": "MM-KP-400"
+     "t": "250 g",
+     "p": 329,
+     "mrp": null,
+     "sku": "MM-BD-250"
     },
     {
-     "t": "800 g",
-     "p": 1062,
-     "mrp": 1100,
-     "sku": "MM-KP-800"
+     "t": "500 g",
+     "p": 639,
+     "mrp": null,
+     "sku": "MM-BD-500"
+    },
+    {
+     "t": "1 kg",
+     "p": 1249,
+     "mrp": null,
+     "sku": "MM-BD-1000"
     }
    ],
-   "rating": 4.9,
-   "reviews": 386,
-   "shelf": "45 days",
+   "rating": 0,
+   "reviews": 0,
+   "shelf": "6 months",
    "ingredients": [
-    "Dates",
-    "Cashews",
-    "Almonds",
-    "Pistachios",
-    "Pumpkin Seeds",
-    "Watermelon Seeds",
-    "Honey"
+    "Almonds"
    ],
-   "desc": "The recipe that started it all. Soft dates are slow-cooked and folded with cashews, almonds, pistachios and seeds, then set into melt-in-mouth squares. Naturally sweet from dates and honey, with no refined sugar. Perfect as a morning energy bite or a guilt-free mithai.",
+   "desc": "Plain whole almonds (badam), cleaned and hand-sorted so you get only full, crunchy nuts. Soak a few overnight for your morning routine, add them to kheer and halwa, or snack straight from the jar. Nothing added.",
    "highlights": [
-    "No refined sugar",
-    "Dates & honey sweetened",
-    "100% homemade",
-    "Rich in fibre"
+    "Whole & hand-sorted",
+    "Nothing added",
+    "Packed fresh",
+    "Airtight jar"
    ]
   },
   {
-   "id": "roasted-salted-dry-fruit-mix",
-   "title": "Roasted & Salted Dry Fruit Mix",
+   "id": "kaju",
+   "title": "Kaju",
    "type": "jar",
    "cats": [
-    "roasted"
+    "dry-fruits",
+    "new"
    ],
-   "short": "Seven nuts & seeds kissed with Himalayan pink salt.",
+   "short": "Whole, creamy cashews, hand-sorted and packed fresh.",
    "art": {
-    "label": "#2F4A5A",
-    "accent": "#C9A227",
-    "bg": "#E6ECEB"
+    "label": "#1F4D3A",
+    "accent": "#E8C77A",
+    "bg": "#F6EEDC"
    },
    "variants": [
     {
-     "t": "150 g",
-     "p": 330,
+     "t": "250 g",
+     "p": 349,
      "mrp": null,
-     "sku": "MM-RS-150"
+     "sku": "MM-KJ-250"
     },
     {
-     "t": "400 g",
-     "p": 715,
+     "t": "500 g",
+     "p": 679,
      "mrp": null,
-     "sku": "MM-RS-400"
+     "sku": "MM-KJ-500"
     },
     {
-     "t": "800 g",
-     "p": 1389,
+     "t": "1 kg",
+     "p": 1329,
      "mrp": null,
-     "sku": "MM-RS-800"
+     "sku": "MM-KJ-1000"
     }
    ],
-   "rating": 4.7,
-   "reviews": 142,
-   "shelf": null,
+   "rating": 0,
+   "reviews": 0,
+   "shelf": "6 months",
    "ingredients": [
-    "Cashews",
-    "Almonds",
-    "Pistachios",
-    "Hazelnuts",
-    "Pumpkin Seeds",
-    "Sunflower Seeds",
-    "Watermelon Seeds",
-    "Pink Salt"
+    "Cashews"
    ],
-   "desc": "A clean, savoury crunch for chai-time. Cashews, almonds, pistachios and hazelnuts are dry-roasted with three kinds of seeds and finished with a light dusting of Himalayan pink salt. Satisfies the namkeen craving without the fried-snack guilt.",
+   "desc": "Plain whole cashews (kaju), cleaned and hand-sorted for full, creamy nuts. Perfect for snacking, curries, mithai and gifting. Nothing added.",
    "highlights": [
-    "Himalayan pink salt",
-    "Dry roasted",
-    "No preservatives",
-    "High protein"
+    "Whole & hand-sorted",
+    "Nothing added",
+    "Packed fresh",
+    "Airtight jar"
+   ]
+  },
+  {
+   "id": "kishmish",
+   "title": "Kishmish",
+   "type": "jar",
+   "cats": [
+    "dry-fruits",
+    "new"
+   ],
+   "short": "Plump, naturally sweet raisins, packed fresh.",
+   "art": {
+    "label": "#8C5A1E",
+    "accent": "#C9A227",
+    "bg": "#F7EBD0"
+   },
+   "variants": [
+    {
+     "t": "250 g",
+     "p": 159,
+     "mrp": null,
+     "sku": "MM-KS-250"
+    },
+    {
+     "t": "500 g",
+     "p": 299,
+     "mrp": null,
+     "sku": "MM-KS-500"
+    },
+    {
+     "t": "1 kg",
+     "p": 569,
+     "mrp": null,
+     "sku": "MM-KS-1000"
+    }
+   ],
+   "rating": 0,
+   "reviews": 0,
+   "shelf": "6 months",
+   "ingredients": [
+    "Raisins"
+   ],
+   "desc": "Plump kishmish (raisins), cleaned and packed fresh. Naturally sweet: add them to kheer, halwa, poha and pulao, or eat a handful with your morning badam. Nothing added.",
+   "highlights": [
+    "Whole & hand-sorted",
+    "Nothing added",
+    "Packed fresh",
+    "Airtight jar"
    ]
   },
   {
@@ -343,46 +396,200 @@
    ]
   },
   {
-   "id": "classic-granola",
-   "title": "Classic Granola",
-   "type": "jar",
+   "id": "dryfruit-khajur-pak",
+   "title": "Dry Fruit Khajur Pak",
+   "type": "box",
    "cats": [
-    "seeds",
-    "new"
+    "khajur",
+    "bestseller"
    ],
-   "short": "Crunchy oats & nuts clustered with jaggery and peanut butter.",
+   "short": "Ghar-jaisa Khajur Pak, sweetened only with dates & honey.",
    "art": {
-    "label": "#B5782B",
-    "accent": "#1F4D3A",
-    "bg": "#F6EBD7"
+    "label": "#6B3F22",
+    "accent": "#C9A227",
+    "bg": "#F1E2CF"
    },
    "variants": [
     {
      "t": "400 g",
-     "p": 599,
-     "mrp": 800,
-     "sku": "MM-GR-400"
+     "p": 549,
+     "mrp": 600,
+     "sku": "MM-KP-400"
+    },
+    {
+     "t": "800 g",
+     "p": 1062,
+     "mrp": 1100,
+     "sku": "MM-KP-800"
+    }
+   ],
+   "rating": 4.9,
+   "reviews": 386,
+   "shelf": "45 days",
+   "ingredients": [
+    "Dates",
+    "Cashews",
+    "Almonds",
+    "Pistachios",
+    "Pumpkin Seeds",
+    "Watermelon Seeds",
+    "Honey"
+   ],
+   "desc": "The recipe that started it all. Soft dates are slow-cooked and folded with cashews, almonds, pistachios and seeds, then set into melt-in-mouth squares. Naturally sweet from dates and honey, with no refined sugar. Perfect as a morning energy bite or a guilt-free mithai.",
+   "highlights": [
+    "No refined sugar",
+    "Dates & honey sweetened",
+    "100% homemade",
+    "Rich in fibre"
+   ]
+  },
+  {
+   "id": "mix-dryfruit-khajur-pak-combo",
+   "title": "Dry Fruit Mix + Khajur Pak Combo",
+   "type": "combo",
+   "cats": [
+    "combos",
+    "bestseller",
+    "diwali",
+    "gifting"
+   ],
+   "short": "Our two bestsellers together: 400 g each.",
+   "art": {
+    "label": "#1F4D3A",
+    "accent": "#C9A227",
+    "bg": "#F3EBD6",
+    "jars": [
+     "#1F4D3A"
+    ],
+    "withBox": true
+   },
+   "variants": [
+    {
+     "t": "400 g + 400 g",
+     "p": 1220,
+     "mrp": 1239,
+     "sku": "MM-C2"
+    }
+   ],
+   "rating": 4.9,
+   "reviews": 172,
+   "shelf": null,
+   "contains": [
+    "Dry Fruit Mix (400 g)",
+    "Dry Fruit Khajur Pak (400 g)"
+   ],
+   "ingredients": [
+    "Almonds",
+    "Cashews",
+    "Pistachios",
+    "Dates",
+    "Cranberries",
+    "Honey"
+   ],
+   "desc": "Everyday snacking meets traditional indulgence. One jar of our ghee-roasted Dry Fruit Mix and one box of dates-sweetened Khajur Pak: the combo our customers gift the most.",
+   "highlights": [
+    "Bestseller pair",
+    "Festive favourite",
+    "No refined sugar",
+    "Gift ready"
+   ]
+  },
+  {
+   "id": "trail-mix",
+   "title": "Trail Mix",
+   "type": "jar",
+   "cats": [
+    "mixes"
+   ],
+   "short": "Nuts, seeds, kharek & three kinds of raisins.",
+   "art": {
+    "label": "#2E6B5E",
+    "accent": "#E6C766",
+    "bg": "#E2EFEA"
+   },
+   "variants": [
+    {
+     "t": "400 g",
+     "p": 610,
+     "mrp": 699,
+     "sku": "MM-TM-400"
     }
    ],
    "rating": 4.6,
-   "reviews": 98,
-   "shelf": "90 days",
+   "reviews": 64,
+   "shelf": null,
    "ingredients": [
-    "Oats",
     "Almonds",
     "Cashews",
+    "Sunflower Seeds",
+    "Pumpkin Seeds",
+    "Yellow Kharek",
+    "Green Raisins",
+    "Black Raisins"
+   ],
+   "desc": "Built for long days and longer drives. Crunchy nuts and seeds balanced with naturally sweet kharek and raisins: steady energy without the sugar crash.",
+   "highlights": [
+    "Naturally sweet",
+    "Travel friendly",
+    "Steady energy",
+    "No preservatives"
+   ],
+   "status": "coming_soon"
+  },
+  {
+   "id": "roasted-salted-dry-fruit-mix",
+   "title": "Roasted & Salted Dry Fruit Mix",
+   "type": "jar",
+   "cats": [
+    "roasted"
+   ],
+   "short": "Seven nuts & seeds kissed with Himalayan pink salt.",
+   "art": {
+    "label": "#2F4A5A",
+    "accent": "#C9A227",
+    "bg": "#E6ECEB"
+   },
+   "variants": [
+    {
+     "t": "150 g",
+     "p": 330,
+     "mrp": null,
+     "sku": "MM-RS-150"
+    },
+    {
+     "t": "400 g",
+     "p": 715,
+     "mrp": null,
+     "sku": "MM-RS-400"
+    },
+    {
+     "t": "800 g",
+     "p": 1389,
+     "mrp": null,
+     "sku": "MM-RS-800"
+    }
+   ],
+   "rating": 4.7,
+   "reviews": 142,
+   "shelf": null,
+   "ingredients": [
+    "Cashews",
+    "Almonds",
+    "Pistachios",
+    "Hazelnuts",
     "Pumpkin Seeds",
     "Sunflower Seeds",
-    "Jaggery",
-    "Peanut Butter"
+    "Watermelon Seeds",
+    "Pink Salt"
    ],
-   "desc": "Breakfast, sorted. Whole oats are baked into golden clusters with almonds, cashews and seeds, bound with jaggery and peanut butter instead of refined sugar. Pour it over milk or curd, or eat it straight from the jar.",
+   "desc": "A clean, savoury crunch for chai-time. Cashews, almonds, pistachios and hazelnuts are dry-roasted with three kinds of seeds and finished with a light dusting of Himalayan pink salt. Satisfies the namkeen craving without the fried-snack guilt.",
    "highlights": [
-    "Jaggery sweetened",
-    "No refined sugar",
-    "Baked, not fried",
-    "Fibre-rich oats"
-   ]
+    "Himalayan pink salt",
+    "Dry roasted",
+    "No preservatives",
+    "High protein"
+   ],
+   "status": "coming_soon"
   },
   {
    "id": "masala-dryfruit-mix",
@@ -424,7 +631,51 @@
     "House masala",
     "Mild & chatpata",
     "No preservatives"
-   ]
+   ],
+   "status": "coming_soon"
+  },
+  {
+   "id": "masala-cashew",
+   "title": "Masala Cashew",
+   "type": "jar",
+   "cats": [
+    "roasted"
+   ],
+   "short": "Whole cashews coated in authentic Indian spices.",
+   "art": {
+    "label": "#9A4A12",
+    "accent": "#E6C766",
+    "bg": "#F6E6D2"
+   },
+   "variants": [
+    {
+     "t": "400 g",
+     "p": 700,
+     "mrp": null,
+     "sku": "MM-MC-400"
+    },
+    {
+     "t": "800 g",
+     "p": 1349,
+     "mrp": null,
+     "sku": "MM-MC-800"
+    }
+   ],
+   "rating": 4.8,
+   "reviews": 133,
+   "shelf": null,
+   "ingredients": [
+    "Cashews",
+    "Spices"
+   ],
+   "desc": "Plump whole cashews, roasted till crisp and coated in a bold blend of Indian spices. No artificial flavours, no preservatives: just a seriously addictive tea-time snack.",
+   "highlights": [
+    "Whole cashews",
+    "Bold spices",
+    "No artificial flavour",
+    "Party favourite"
+   ],
+   "status": "coming_soon"
   },
   {
    "id": "protein-beans-mix",
@@ -469,7 +720,8 @@
     "No added flavours",
     "Roasted, not fried",
     "Gym-bag friendly"
-   ]
+   ],
+   "status": "coming_soon"
   },
   {
    "id": "seed-mix-with-haldi-roasted-salted",
@@ -516,90 +768,51 @@
     "Pink salt",
     "Rich in minerals",
     "Salad topper"
-   ]
+   ],
+   "status": "coming_soon"
   },
   {
-   "id": "masala-cashew",
-   "title": "Masala Cashew",
+   "id": "classic-granola",
+   "title": "Classic Granola",
    "type": "jar",
    "cats": [
-    "roasted"
+    "seeds",
+    "new"
    ],
-   "short": "Whole cashews coated in authentic Indian spices.",
+   "short": "Crunchy oats & nuts clustered with jaggery and peanut butter.",
    "art": {
-    "label": "#9A4A12",
-    "accent": "#E6C766",
-    "bg": "#F6E6D2"
+    "label": "#B5782B",
+    "accent": "#1F4D3A",
+    "bg": "#F6EBD7"
    },
    "variants": [
     {
      "t": "400 g",
-     "p": 700,
-     "mrp": null,
-     "sku": "MM-MC-400"
-    },
-    {
-     "t": "800 g",
-     "p": 1349,
-     "mrp": null,
-     "sku": "MM-MC-800"
-    }
-   ],
-   "rating": 4.8,
-   "reviews": 133,
-   "shelf": null,
-   "ingredients": [
-    "Cashews",
-    "Spices"
-   ],
-   "desc": "Plump whole cashews, roasted till crisp and coated in a bold blend of Indian spices. No artificial flavours, no preservatives: just a seriously addictive tea-time snack.",
-   "highlights": [
-    "Whole cashews",
-    "Bold spices",
-    "No artificial flavour",
-    "Party favourite"
-   ]
-  },
-  {
-   "id": "trail-mix",
-   "title": "Trail Mix",
-   "type": "jar",
-   "cats": [
-    "mixes"
-   ],
-   "short": "Nuts, seeds, kharek & three kinds of raisins.",
-   "art": {
-    "label": "#2E6B5E",
-    "accent": "#E6C766",
-    "bg": "#E2EFEA"
-   },
-   "variants": [
-    {
-     "t": "400 g",
-     "p": 610,
-     "mrp": 699,
-     "sku": "MM-TM-400"
+     "p": 599,
+     "mrp": 800,
+     "sku": "MM-GR-400"
     }
    ],
    "rating": 4.6,
-   "reviews": 64,
-   "shelf": null,
+   "reviews": 98,
+   "shelf": "90 days",
    "ingredients": [
+    "Oats",
     "Almonds",
     "Cashews",
-    "Sunflower Seeds",
     "Pumpkin Seeds",
-    "Yellow Kharek",
-    "Green Raisins",
-    "Black Raisins"
+    "Sunflower Seeds",
+    "Jaggery",
+    "Peanut Butter"
    ],
-   "desc": "Built for long days and longer drives. Crunchy nuts and seeds balanced with naturally sweet kharek and raisins: steady energy without the sugar crash.",
+   "desc": "Breakfast, sorted. Whole oats are baked into golden clusters with almonds, cashews and seeds, bound with jaggery and peanut butter instead of refined sugar. Pour it over milk or curd, or eat it straight from the jar.",
    "highlights": [
-    "Naturally sweet",
-    "Travel friendly",
-    "Steady energy",
-    "No preservatives"
-   ]
+    "Jaggery sweetened",
+    "No refined sugar",
+    "Baked, not fried",
+    "Fibre-rich oats"
+   ],
+   "status": "coming_soon"
   },
   {
    "id": "seven-in-one-combo",
@@ -657,7 +870,8 @@
     "Save ₹348",
     "Family pack",
     "Great for gifting"
-   ]
+   ],
+   "status": "coming_soon"
   },
   {
    "id": "snacking-combo",
@@ -713,58 +927,195 @@
     "Starter kit",
     "Office stash",
     "Gift ready"
-   ]
+   ],
+   "status": "coming_soon"
   },
   {
-   "id": "mix-dryfruit-khajur-pak-combo",
-   "title": "Dry Fruit Mix + Khajur Pak Combo",
-   "type": "combo",
+   "id": "khajur-pak-gifting-box-1",
+   "title": "Khajur Pak Gifting Box: Emerald",
+   "type": "box",
    "cats": [
-    "combos",
-    "bestseller",
-    "diwali",
-    "gifting"
+    "gifting",
+    "khajur",
+    "diwali"
    ],
-   "short": "Our two bestsellers together: 400 g each.",
+   "short": "Premium emerald box with 10 or 50 Khajur Pak pieces.",
    "art": {
-    "label": "#1F4D3A",
-    "accent": "#C9A227",
-    "bg": "#F3EBD6",
-    "jars": [
-     "#1F4D3A"
-    ],
-    "withBox": true
+    "label": "#1F6B4E",
+    "accent": "#E6C766",
+    "bg": "#E4EFE8",
+    "window": true
    },
    "variants": [
     {
-     "t": "400 g + 400 g",
-     "p": 1220,
-     "mrp": 1239,
-     "sku": "MM-C2"
+     "t": "10 Pcs",
+     "p": 2000,
+     "mrp": null,
+     "sku": "MM-GB1-10",
+     "soldOut": true
+    },
+    {
+     "t": "50 Pcs",
+     "p": 8100,
+     "mrp": null,
+     "sku": "MM-GB1-50",
+     "soldOut": true
+    }
+   ],
+   "rating": 4.8,
+   "reviews": 12,
+   "shelf": "45 days",
+   "ingredients": [
+    "Dates",
+    "Cashews",
+    "Almonds",
+    "Pistachios",
+    "Honey"
+   ],
+   "desc": "Individually set Khajur Pak pieces in a windowed emerald gift box with gold foil detailing. Choose 10 pieces for family or 50 for corporate and wedding gifting.",
+   "highlights": [
+    "Windowed gift box",
+    "Gold foil finish",
+    "Bulk option",
+    "Corporate gifting"
+   ],
+   "status": "coming_soon"
+  },
+  {
+   "id": "khajur-pak-gifting-box-2",
+   "title": "Khajur Pak Gifting Box: Royal Plum",
+   "type": "box",
+   "cats": [
+    "gifting",
+    "khajur"
+   ],
+   "short": "Royal plum box with 10 or 50 Khajur Pak pieces.",
+   "art": {
+    "label": "#5B2A5E",
+    "accent": "#E6C766",
+    "bg": "#EFE4EF",
+    "window": true
+   },
+   "variants": [
+    {
+     "t": "10 Pcs",
+     "p": 2000,
+     "mrp": null,
+     "sku": "MM-GB2-10",
+     "soldOut": true
+    },
+    {
+     "t": "50 Pcs",
+     "p": 8100,
+     "mrp": null,
+     "sku": "MM-GB2-50",
+     "soldOut": true
+    }
+   ],
+   "rating": 4.7,
+   "reviews": 9,
+   "shelf": "45 days",
+   "ingredients": [
+    "Dates",
+    "Cashews",
+    "Almonds",
+    "Pistachios",
+    "Honey"
+   ],
+   "desc": "A regal plum-and-gold box holding hand-cut Khajur Pak pieces. A sweet that feels luxurious and stays healthy: no refined sugar, ever.",
+   "highlights": [
+    "Windowed gift box",
+    "Gold foil finish",
+    "Bulk option",
+    "Wedding favours"
+   ],
+   "status": "coming_soon"
+  },
+  {
+   "id": "khajur-pak-gifting-box-3",
+   "title": "Khajur Pak Gifting Box: Burgundy",
+   "type": "box",
+   "cats": [
+    "gifting",
+    "khajur",
+    "diwali"
+   ],
+   "short": "Burgundy & gold gift box, 10 premium pieces.",
+   "art": {
+    "label": "#7A1F2B",
+    "accent": "#E6C766",
+    "bg": "#F4E3E1",
+    "window": true
+   },
+   "variants": [
+    {
+     "t": "10 Pcs",
+     "p": 3300,
+     "mrp": null,
+     "sku": "MM-GB3-10"
     }
    ],
    "rating": 4.9,
-   "reviews": 172,
-   "shelf": null,
-   "contains": [
-    "Dry Fruit Mix (400 g)",
-    "Dry Fruit Khajur Pak (400 g)"
-   ],
+   "reviews": 15,
+   "shelf": "45 days",
    "ingredients": [
-    "Almonds",
-    "Cashews",
-    "Pistachios",
     "Dates",
-    "Cranberries",
+    "Cashews",
+    "Almonds",
+    "Pistachios",
     "Honey"
    ],
-   "desc": "Everyday snacking meets traditional indulgence. One jar of our ghee-roasted Dry Fruit Mix and one box of dates-sweetened Khajur Pak: the combo our customers gift the most.",
+   "desc": "Ten generous pieces of our signature Khajur Pak, each topped with slivered nuts, in a burgundy box with a leaf-gold window. Our most-loved festive gift.",
    "highlights": [
-    "Bestseller pair",
+    "Premium pieces",
+    "Leaf-gold window box",
     "Festive favourite",
+    "Ships pan-India"
+   ],
+   "status": "coming_soon"
+  },
+  {
+   "id": "khajur-pak-gifting-box-4",
+   "title": "Khajur Pak Gifting Box: Peacock Teal",
+   "type": "box",
+   "cats": [
+    "gifting",
+    "khajur",
+    "diwali"
+   ],
+   "short": "Peacock-teal festive box, 10 premium pieces.",
+   "art": {
+    "label": "#1B6B73",
+    "accent": "#E6C766",
+    "bg": "#E0EFEF",
+    "window": true
+   },
+   "variants": [
+    {
+     "t": "10 Pcs",
+     "p": 3300,
+     "mrp": null,
+     "sku": "MM-GB4-10"
+    }
+   ],
+   "rating": 4.9,
+   "reviews": 11,
+   "shelf": "45 days",
+   "ingredients": [
+    "Dates",
+    "Cashews",
+    "Almonds",
+    "Pistachios",
+    "Honey"
+   ],
+   "desc": "A peacock-teal box with festive gold motifs and ten premium Khajur Pak pieces inside. Thoughtful, healthy and unforgettable.",
+   "highlights": [
+    "Premium pieces",
+    "Festive motifs",
     "No refined sugar",
-    "Gift ready"
-   ]
+    "Ships pan-India"
+   ],
+   "status": "coming_soon"
   },
   {
    "id": "rakhi-gift-genuine-leather-purse-khajur-pak-400-g-mix-dryfruit-150g",
@@ -825,7 +1176,8 @@
     "Ajrakh print",
     "Limited edition",
     "Gift packed"
-   ]
+   ],
+   "status": "coming_soon"
   },
   {
    "id": "rakshabandhan-special-khajur-pak-with-rakhi",
@@ -871,7 +1223,8 @@
     "Ships pan-India",
     "No refined sugar",
     "Seasonal"
-   ]
+   ],
+   "status": "coming_soon"
   },
   {
    "id": "rakhi-greeting-card",
@@ -905,7 +1258,8 @@
     "Greeting card",
     "Add-on gift",
     "Seasonal"
-   ]
+   ],
+   "status": "coming_soon"
   },
   {
    "id": "diwali-gift-hamper",
@@ -945,190 +1299,8 @@
     "Curated bestsellers",
     "Corporate friendly",
     "Seasonal"
-   ]
-  },
-  {
-   "id": "khajur-pak-gifting-box-1",
-   "title": "Khajur Pak Gifting Box: Emerald",
-   "type": "box",
-   "cats": [
-    "gifting",
-    "khajur",
-    "diwali"
    ],
-   "short": "Premium emerald box with 10 or 50 Khajur Pak pieces.",
-   "art": {
-    "label": "#1F6B4E",
-    "accent": "#E6C766",
-    "bg": "#E4EFE8",
-    "window": true
-   },
-   "variants": [
-    {
-     "t": "10 Pcs",
-     "p": 2000,
-     "mrp": null,
-     "sku": "MM-GB1-10",
-     "soldOut": true
-    },
-    {
-     "t": "50 Pcs",
-     "p": 8100,
-     "mrp": null,
-     "sku": "MM-GB1-50",
-     "soldOut": true
-    }
-   ],
-   "rating": 4.8,
-   "reviews": 12,
-   "shelf": "45 days",
-   "ingredients": [
-    "Dates",
-    "Cashews",
-    "Almonds",
-    "Pistachios",
-    "Honey"
-   ],
-   "desc": "Individually set Khajur Pak pieces in a windowed emerald gift box with gold foil detailing. Choose 10 pieces for family or 50 for corporate and wedding gifting.",
-   "highlights": [
-    "Windowed gift box",
-    "Gold foil finish",
-    "Bulk option",
-    "Corporate gifting"
-   ]
-  },
-  {
-   "id": "khajur-pak-gifting-box-2",
-   "title": "Khajur Pak Gifting Box: Royal Plum",
-   "type": "box",
-   "cats": [
-    "gifting",
-    "khajur"
-   ],
-   "short": "Royal plum box with 10 or 50 Khajur Pak pieces.",
-   "art": {
-    "label": "#5B2A5E",
-    "accent": "#E6C766",
-    "bg": "#EFE4EF",
-    "window": true
-   },
-   "variants": [
-    {
-     "t": "10 Pcs",
-     "p": 2000,
-     "mrp": null,
-     "sku": "MM-GB2-10",
-     "soldOut": true
-    },
-    {
-     "t": "50 Pcs",
-     "p": 8100,
-     "mrp": null,
-     "sku": "MM-GB2-50",
-     "soldOut": true
-    }
-   ],
-   "rating": 4.7,
-   "reviews": 9,
-   "shelf": "45 days",
-   "ingredients": [
-    "Dates",
-    "Cashews",
-    "Almonds",
-    "Pistachios",
-    "Honey"
-   ],
-   "desc": "A regal plum-and-gold box holding hand-cut Khajur Pak pieces. A sweet that feels luxurious and stays healthy: no refined sugar, ever.",
-   "highlights": [
-    "Windowed gift box",
-    "Gold foil finish",
-    "Bulk option",
-    "Wedding favours"
-   ]
-  },
-  {
-   "id": "khajur-pak-gifting-box-3",
-   "title": "Khajur Pak Gifting Box: Burgundy",
-   "type": "box",
-   "cats": [
-    "gifting",
-    "khajur",
-    "diwali"
-   ],
-   "short": "Burgundy & gold gift box, 10 premium pieces.",
-   "art": {
-    "label": "#7A1F2B",
-    "accent": "#E6C766",
-    "bg": "#F4E3E1",
-    "window": true
-   },
-   "variants": [
-    {
-     "t": "10 Pcs",
-     "p": 3300,
-     "mrp": null,
-     "sku": "MM-GB3-10"
-    }
-   ],
-   "rating": 4.9,
-   "reviews": 15,
-   "shelf": "45 days",
-   "ingredients": [
-    "Dates",
-    "Cashews",
-    "Almonds",
-    "Pistachios",
-    "Honey"
-   ],
-   "desc": "Ten generous pieces of our signature Khajur Pak, each topped with slivered nuts, in a burgundy box with a leaf-gold window. Our most-loved festive gift.",
-   "highlights": [
-    "Premium pieces",
-    "Leaf-gold window box",
-    "Festive favourite",
-    "Ships pan-India"
-   ]
-  },
-  {
-   "id": "khajur-pak-gifting-box-4",
-   "title": "Khajur Pak Gifting Box: Peacock Teal",
-   "type": "box",
-   "cats": [
-    "gifting",
-    "khajur",
-    "diwali"
-   ],
-   "short": "Peacock-teal festive box, 10 premium pieces.",
-   "art": {
-    "label": "#1B6B73",
-    "accent": "#E6C766",
-    "bg": "#E0EFEF",
-    "window": true
-   },
-   "variants": [
-    {
-     "t": "10 Pcs",
-     "p": 3300,
-     "mrp": null,
-     "sku": "MM-GB4-10"
-    }
-   ],
-   "rating": 4.9,
-   "reviews": 11,
-   "shelf": "45 days",
-   "ingredients": [
-    "Dates",
-    "Cashews",
-    "Almonds",
-    "Pistachios",
-    "Honey"
-   ],
-   "desc": "A peacock-teal box with festive gold motifs and ten premium Khajur Pak pieces inside. Thoughtful, healthy and unforgettable.",
-   "highlights": [
-    "Premium pieces",
-    "Festive motifs",
-    "No refined sugar",
-    "Ships pan-India"
-   ]
+   "status": "coming_soon"
   },
   {
    "id": "sweet-dryfruit-gift-box",
@@ -1167,7 +1339,8 @@
     "Sweet + savoury",
     "Gift ready",
     "Seasonal"
-   ]
+   ],
+   "status": "coming_soon"
   }
  ],
  "REVIEWS": [
@@ -1413,7 +1586,7 @@
    "title": "5 Desk Snacks That Beat the 4 PM Slump",
    "date": "2026-10-05",
    "mins": 3,
-   "art": "protein-beans-mix",
+   "art": "dry-fruit-snack-mix",
    "tag": "Snacking",
    "excerpt": "Swap the vending machine for these protein-packed, no-junk options.",
    "body": [
@@ -1427,7 +1600,7 @@
    "title": "The Healthy Diwali Gifting Guide",
    "date": "2026-09-20",
    "mins": 4,
-   "art": "khajur-pak-gifting-box-4",
+   "art": "mix-dryfruit-khajur-pak-combo",
    "tag": "Gifting",
    "excerpt": "Gifts that feel premium and are actually good for the people you love.",
    "body": [

@@ -49,7 +49,7 @@ const STATUS_STYLE: Record<string, string> = {
   CANCELLED: 'bg-red-100 text-red-700', RETURNED: 'bg-stone-200 text-stone-700',
   PENDING: 'bg-amber-100 text-amber-800', APPROVED: 'bg-sage text-green', REJECTED: 'bg-red-100 text-red-700',
   NEW: 'bg-amber-100 text-amber-800', IN_PROGRESS: 'bg-sky-100 text-sky-800', CLOSED: 'bg-stone-200 text-stone-700',
-  ACTIVE: 'bg-sage text-green', DRAFT: 'bg-stone-200 text-stone-700', ARCHIVED: 'bg-red-100 text-red-700',
+  ACTIVE: 'bg-sage text-green', COMING_SOON: 'bg-gold-soft text-gold-d', DRAFT: 'bg-stone-200 text-stone-700', ARCHIVED: 'bg-red-100 text-red-700',
 };
 export const label = (s: string) => s.replace(/_/g, ' ').toLowerCase().replace(/^\w/, (c) => c.toUpperCase());
 export function Badge({ value }: { value: string }) {

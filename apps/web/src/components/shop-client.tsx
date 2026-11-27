@@ -47,7 +47,7 @@ export function ShopClient({ params, collections, data }: { params: Params; coll
           <Link className={`chip ${params.c === 'all' && !params.q ? 'is-active' : ''}`} href="/shop">All Products</Link>
           {collections.map(c => <Link key={c.slug} className={`chip ${c.slug === params.c && !params.q ? 'is-active' : ''}`} href={`/shop?c=${c.slug}`}>{c.title}</Link>)}
         </div>
-      </div><div className="page-hero__art"><Art slug={ART[params.c] ?? 'mix-dryfruit'} /></div></section>
+      </div><div className="page-hero__art"><Art slug={[ART[params.c], ...data.items.map(p => p.slug)]} /></div></section>
 
       <section className="section" style={{ paddingTop: 40 }}><div className="container shop">
         <aside className={`filters ${panel === 'filters' ? 'is-open' : ''}`} aria-label="Filters">

@@ -50,7 +50,7 @@ export function Countdown() {
 
 const SLIDES = [
   { e: 'Small-batch · Roasted in pure cow ghee', h: <>Roz ki <em>muththi</em>,<br />sehat ki kunji</>, p: 'Premium dry fruit mixes, Khajur Pak and roasted snacks, made fresh in small batches with zero preservatives.', c: ['Shop Bestsellers', '/shop?c=bestseller'], c2: ['Explore Combos', '/shop?c=combos'] },
-  { e: 'Our signature sweet', h: <>Ghar jaisa<br /><em>Khajur Pak</em></>, p: 'Sweetened only with dates and honey. No refined sugar, no shortcuts, just nani-style goodness in every bite.', c: ['Order Khajur Pak', '/products/dryfruit-khajur-pak'], c2: ['View Gift Boxes', '/shop?c=khajur'] },
+  { e: 'Our signature sweet', h: <>Ghar jaisa<br /><em>Khajur Pak</em></>, p: 'Sweetened only with dates and honey. No refined sugar, no shortcuts, just nani-style goodness in every bite.', c: ['Order Khajur Pak', '/products/dryfruit-khajur-pak'], c2: ['Shop the Combo', '/products/mix-dryfruit-khajur-pak-combo'] },
   { e: 'Festive & corporate gifting', h: <>Tohfa jo<br /><em>sehat</em> de</>, p: 'Premium gift boxes and hampers for Diwali, Rakhi, weddings and teams, with custom branding on bulk orders.', c: ['Explore Gifting', '/shop?c=gifting'], c2: ['Bulk Enquiry', '/contact#bulk'] },
 ];
 

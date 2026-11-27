@@ -47,6 +47,7 @@ export class CatalogService {
 
   collections() {
     return this.db.collection.findMany({
+      where: { products: { some: { status: 'ACTIVE' } } }, // empty collections stay hidden
       orderBy: [{ kind: 'asc' }, { sortOrder: 'asc' }],
       select: { slug: true, title: true, description: true, blurb: true, kind: true, _count: { select: { products: { where: { status: 'ACTIVE' } } } } },
     });
