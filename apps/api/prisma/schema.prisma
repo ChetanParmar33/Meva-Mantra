@@ -1,0 +1,421 @@
+// Meva Mantra: database schema
+// Money is stored in paise (integer) to avoid rounding errors. ₹679 = 67900.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/* ---------------- customers ---------------- */
+
+model User {
+  id             String         @id @default(cuid())
+  phone          String?        @unique
+  email          String?        @unique
+  name           String?
+  dob            DateTime?      @db.Date
+  marketingOptIn Boolean        @default(true)
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  addresses      Address[]
+  orders         Order[]
+  reviews        Review[]
+  wishlist       WishlistItem[]
+}
+
+/// One-time passwords for phone/email login. Only a hash of the code is stored.
+model OtpCode {
+  id         String    @id @default(cuid())
+  target     String // phone number or email
+  codeHash   String
+  expiresAt  DateTime
+  attempts   Int       @default(0)
+  consumedAt DateTime?
+  createdAt  DateTime  @default(now())
+
+  @@index([target, createdAt])
+}
+
+enum AddressType {
+  HOME
+  WORK
+  OTHER
+}
+
+model Address {
+  id        String      @id @default(cuid())
+  userId    String
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  phone     String
+  line1     String
+  landmark  String?
+  city      String
+  state     String
+  pincode   String
+  type      AddressType @default(HOME)
+  isDefault Boolean     @default(false)
+  createdAt DateTime    @default(now())
+
+  @@index([userId])
+}
+
+/* ---------------- admin ---------------- */
+
+enum AdminRole {
+  OWNER
+  STAFF
+}
+
+model AdminUser {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  name         String
+  passwordHash String
+  role         AdminRole @default(STAFF)
+  isActive     Boolean   @default(true)
+  lastLoginAt  DateTime?
+  createdAt    DateTime  @default(now())
+}
+
+/* ---------------- catalog ---------------- */
+
+enum CollectionKind {
+  CATEGORY // shown in "Shop by category"
+  COLLECTION // bestsellers, new arrivals, festive...
+}
+
+model Collection {
+  id          String         @id @default(cuid())
+  slug        String         @unique
+  title       String
+  description String?
+  blurb       String?
+  kind        CollectionKind @default(COLLECTION)
+  sortOrder   Int            @default(0)
+  products    Product[]
+}
+
+enum ProductType {
+  JAR
+  BOX
+  COMBO
+  HAMPER
+  PURSE
+  CARD
+}
+
+enum ProductStatus {
+  ACTIVE
+  DRAFT
+  ARCHIVED
+}
+
+model Product {
+  id             String           @id @default(cuid())
+  slug           String           @unique
+  title          String
+  type           ProductType      @default(JAR)
+  status         ProductStatus    @default(ACTIVE)
+  short          String
+  description    String
+  ingredients    String[]
+  highlights     String[]
+  contains       String[] // for combos and hampers
+  shelfLife      String?
+  optionName     String           @default("Size")
+  limitedNote    String?
+  /// Colours for the generated SVG artwork until real photos are uploaded: { label, accent, bg, ... }
+  art            Json?
+  ratingAvg      Float            @default(0)
+  ratingCount    Int              @default(0)
+  seoTitle       String?
+  seoDescription String?
+  sortOrder      Int              @default(0)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  variants       ProductVariant[]
+  images         ProductImage[]
+  collections    Collection[]
+  reviews        Review[]
+  wishlistedBy   WishlistItem[]
+  orderItems     OrderItem[]
+
+  @@index([status, sortOrder])
+}
+
+model ProductVariant {
+  id          String      @id @default(cuid())
+  productId   String
+  product     Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  title       String // "400 g", "Maroon", "10 Pcs"
+  sku         String      @unique
+  pricePaise  Int
+  mrpPaise    Int?
+  stock       Int         @default(0)
+  swatch      String? // hex colour for colour options
+  weightGrams Int?
+  position    Int         @default(0)
+  orderItems  OrderItem[]
+
+  @@index([productId])
+}
+
+model ProductImage {
+  id        String  @id @default(cuid())
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  url       String
+  alt       String  @default("")
+  position  Int     @default(0)
+
+  @@index([productId])
+}
+
+model WishlistItem {
+  userId    String
+  productId String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@id([userId, productId])
+}
+
+/* ---------------- offers ---------------- */
+
+enum DiscountType {
+  PERCENT
+  FLAT
+}
+
+model Coupon {
+  id               String       @id @default(cuid())
+  code             String       @unique
+  description      String
+  type             DiscountType @default(PERCENT)
+  value            Int // percent (10) or paise (5000)
+  minOrderPaise    Int          @default(0)
+  maxDiscountPaise Int?
+  startsAt         DateTime?
+  endsAt           DateTime?
+  usageLimit       Int?
+  usedCount        Int          @default(0)
+  firstOrderOnly   Boolean      @default(false)
+  isActive         Boolean      @default(true)
+  createdAt        DateTime     @default(now())
+}
+
+/* ---------------- orders ---------------- */
+
+enum OrderStatus {
+  PENDING_PAYMENT
+  CONFIRMED
+  PACKED
+  SHIPPED
+  OUT_FOR_DELIVERY
+  DELIVERED
+  CANCELLED
+  RETURNED
+}
+
+enum PaymentMode {
+  PREPAID
+  COD
+}
+
+model Order {
+  id                   String        @id @default(cuid())
+  number               String        @unique // MM10001
+  userId               String?
+  user                 User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
+  status               OrderStatus   @default(PENDING_PAYMENT)
+  paymentMode          PaymentMode
+  phone                String
+  email                String?
+  /// Snapshot of the address at order time (so edits to saved addresses don't change old orders)
+  shippingAddress      Json
+  subtotalPaise        Int
+  mrpSavingsPaise      Int           @default(0)
+  couponCode           String?
+  couponDiscountPaise  Int           @default(0)
+  prepaidDiscountPaise Int           @default(0)
+  shippingPaise        Int           @default(0)
+  giftWrapPaise        Int           @default(0)
+  totalPaise           Int
+  giftMessage          String?
+  note                 String?
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
+  items                OrderItem[]
+  payments             Payment[]
+  shipment             Shipment?
+  events               OrderEvent[]
+
+  @@index([userId, createdAt])
+  @@index([status, createdAt])
+}
+
+model OrderItem {
+  id             String          @id @default(cuid())
+  orderId        String
+  order          Order           @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId      String?
+  product        Product?        @relation(fields: [productId], references: [id], onDelete: SetNull)
+  variantId      String?
+  variant        ProductVariant? @relation(fields: [variantId], references: [id], onDelete: SetNull)
+  title          String
+  variantTitle   String
+  sku            String
+  unitPricePaise Int
+  qty            Int
+  lineTotalPaise Int
+
+  @@index([orderId])
+}
+
+enum PaymentStatus {
+  CREATED
+  CAPTURED
+  FAILED
+  REFUNDED
+}
+
+model Payment {
+  id                String        @id @default(cuid())
+  orderId           String
+  order             Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  provider          String // "razorpay" | "cod"
+  providerOrderId   String?       @unique
+  providerPaymentId String?       @unique
+  method            String? // upi, card, netbanking, wallet
+  status            PaymentStatus @default(CREATED)
+  amountPaise       Int
+  raw               Json?
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+
+  @@index([orderId])
+}
+
+model Shipment {
+  id          String    @id @default(cuid())
+  orderId     String    @unique
+  order       Order     @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  courier     String?
+  awb         String?
+  trackingUrl String?
+  shippedAt   DateTime?
+  deliveredAt DateTime?
+  raw         Json?
+}
+
+model OrderEvent {
+  id        String      @id @default(cuid())
+  orderId   String
+  order     Order       @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  status    OrderStatus
+  note      String?
+  createdAt DateTime    @default(now())
+
+  @@index([orderId, createdAt])
+}
+
+/* ---------------- content ---------------- */
+
+enum ReviewStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model Review {
+  id         String       @id @default(cuid())
+  productId  String
+  product    Product      @relation(fields: [productId], references: [id], onDelete: Cascade)
+  userId     String?
+  user       User?        @relation(fields: [userId], references: [id], onDelete: SetNull)
+  name       String
+  city       String?
+  rating     Int
+  text       String
+  isVerified Boolean      @default(false)
+  status     ReviewStatus @default(PENDING)
+  createdAt  DateTime     @default(now())
+
+  @@index([productId, status])
+}
+
+model Post {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  title       String
+  excerpt     String
+  body        String // markdown
+  tag         String
+  coverSlug   String? // product slug used for the cover artwork
+  readMins    Int       @default(3)
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Faq {
+  id        String @id @default(cuid())
+  category  String
+  question  String
+  answer    String
+  sortOrder Int    @default(0)
+}
+
+model Policy {
+  id        String   @id @default(cuid())
+  slug      String   @unique // shipping, refund, privacy, terms
+  title     String
+  /// [{ heading, body }]
+  sections  Json
+  updatedAt DateTime @updatedAt
+}
+
+enum EnquiryType {
+  CONTACT
+  BULK
+}
+
+enum EnquiryStatus {
+  NEW
+  IN_PROGRESS
+  CLOSED
+}
+
+model Enquiry {
+  id        String        @id @default(cuid())
+  type      EnquiryType
+  name      String
+  email     String
+  phone     String
+  company   String?
+  topic     String?
+  quantity  String?
+  occasion  String?
+  message   String
+  status    EnquiryStatus @default(NEW)
+  createdAt DateTime      @default(now())
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
+/// Store-wide settings editable from admin: prepaid discount, shipping fee, brand contact info...
+model Setting {
+  key       String   @id
+  value     Json
+  updatedAt DateTime @updatedAt
+}

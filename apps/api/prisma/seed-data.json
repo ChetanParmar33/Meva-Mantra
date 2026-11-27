@@ -1,0 +1,1440 @@
+{
+ "BRAND": {
+  "name": "Meva Mantra",
+  "tagline": "Roz ki muththi, sehat ki kunji",
+  "phone": "+91 98765 43210",
+  "whatsapp": "919876543210",
+  "email": "hello@mevamantra.in",
+  "address": "Your Business Address, City, State – 000000",
+  "hours": "Mon–Sat, 10 AM – 7 PM",
+  "freeShipAt": 500,
+  "shipFee": 49,
+  "prepaidOff": 5,
+  "giftWrap": 49,
+  "instagram": "#",
+  "facebook": "#",
+  "youtube": "#",
+  "amazon": "#"
+ },
+ "COUPONS": {
+  "MANTRA10": {
+   "pct": 10,
+   "min": 499,
+   "label": "10% off on your first order (min ₹499)"
+  },
+  "FESTIVE15": {
+   "pct": 15,
+   "min": 1499,
+   "label": "15% off on orders above ₹1,499"
+  },
+  "COMBO5": {
+   "pct": 5,
+   "min": 0,
+   "label": "Extra 5% off on any order"
+  }
+ },
+ "CATEGORIES": [
+  {
+   "id": "mixes",
+   "title": "Dry Fruit Mixes",
+   "blurb": "Ghee-roasted everyday blends",
+   "color": "#C9A227"
+  },
+  {
+   "id": "roasted",
+   "title": "Roasted & Masala",
+   "blurb": "Savoury, crunchy, guilt-free",
+   "color": "#C1440E"
+  },
+  {
+   "id": "khajur",
+   "title": "Khajur Pak",
+   "blurb": "Dates-sweetened, no refined sugar",
+   "color": "#6B3F22"
+  },
+  {
+   "id": "seeds",
+   "title": "Granola & Seeds",
+   "blurb": "Breakfast & protein boost",
+   "color": "#7A8F3A"
+  },
+  {
+   "id": "combos",
+   "title": "Combos",
+   "blurb": "More variety, more savings",
+   "color": "#1F4D3A"
+  },
+  {
+   "id": "gifting",
+   "title": "Gifting",
+   "blurb": "Boxes & hampers for every occasion",
+   "color": "#8C2F4B"
+  }
+ ],
+ "COLLECTIONS": [
+  {
+   "id": "all",
+   "title": "All Products",
+   "desc": "Every jar, box and hamper we make, in one place."
+  },
+  {
+   "id": "bestseller",
+   "title": "Bestsellers",
+   "desc": "The jars our customers reorder the most."
+  },
+  {
+   "id": "new",
+   "title": "New Arrivals",
+   "desc": "Fresh from our kitchen: the newest blends."
+  },
+  {
+   "id": "mixes",
+   "title": "Dry Fruit Mixes",
+   "desc": "Premium nuts, seeds and berries, small-batch roasted in pure cow ghee."
+  },
+  {
+   "id": "roasted",
+   "title": "Roasted & Masala",
+   "desc": "Savoury snacks with bold desi flavour and zero junk."
+  },
+  {
+   "id": "khajur",
+   "title": "Khajur Pak",
+   "desc": "Our signature dates-and-dry-fruit sweet, made the ghar-jaisa way."
+  },
+  {
+   "id": "seeds",
+   "title": "Granola & Seeds",
+   "desc": "Crunchy granola, seed mixes and protein snacks for active days."
+  },
+  {
+   "id": "combos",
+   "title": "Combos",
+   "desc": "Try more, save more: curated multi-jar packs."
+  },
+  {
+   "id": "gifting",
+   "title": "Gifting",
+   "desc": "Gift boxes and hampers that say “sehat ka tohfa”."
+  },
+  {
+   "id": "rakhi",
+   "title": "Rakhi Special",
+   "desc": "Hampers made for the sibling bond."
+  },
+  {
+   "id": "diwali",
+   "title": "Diwali Gifting",
+   "desc": "Festive boxes for family, friends and teams."
+  }
+ ],
+ "PRODUCTS": [
+  {
+   "id": "mix-dryfruit",
+   "title": "Dry Fruit Mix",
+   "type": "jar",
+   "cats": [
+    "mixes",
+    "bestseller"
+   ],
+   "short": "Nine nuts, seeds & berries slow-roasted in pure cow ghee.",
+   "art": {
+    "label": "#1F4D3A",
+    "accent": "#C9A227",
+    "bg": "#F3EBD6"
+   },
+   "variants": [
+    {
+     "t": "400 g",
+     "p": 679,
+     "mrp": 800,
+     "sku": "MM-DFM-400"
+    },
+    {
+     "t": "800 g",
+     "p": 1320,
+     "mrp": 1500,
+     "sku": "MM-DFM-800"
+    }
+   ],
+   "rating": 4.8,
+   "reviews": 214,
+   "shelf": "90 days",
+   "ingredients": [
+    "Almonds",
+    "Cashews",
+    "Pistachios",
+    "Pumpkin Seeds",
+    "Sunflower Seeds",
+    "Poppy Seeds",
+    "Cranberries",
+    "Black Currants",
+    "Blueberries",
+    "Cow Ghee"
+   ],
+   "desc": "Our everyday hero jar. Hand-picked almonds, cashews and pistachios meet crunchy seeds and tangy berries, gently roasted in small batches with pure cow ghee. No preservatives, no added sugar: just a handful of real energy for office desks, school tiffins and evening cravings.",
+   "highlights": [
+    "Roasted in cow ghee",
+    "No added sugar",
+    "No preservatives",
+    "Small-batch made"
+   ]
+  },
+  {
+   "id": "dryfruit-khajur-pak",
+   "title": "Dry Fruit Khajur Pak",
+   "type": "box",
+   "cats": [
+    "khajur",
+    "bestseller"
+   ],
+   "short": "Ghar-jaisa Khajur Pak, sweetened only with dates & honey.",
+   "art": {
+    "label": "#6B3F22",
+    "accent": "#C9A227",
+    "bg": "#F1E2CF"
+   },
+   "variants": [
+    {
+     "t": "400 g",
+     "p": 549,
+     "mrp": 600,
+     "sku": "MM-KP-400"
+    },
+    {
+     "t": "800 g",
+     "p": 1062,
+     "mrp": 1100,
+     "sku": "MM-KP-800"
+    }
+   ],
+   "rating": 4.9,
+   "reviews": 386,
+   "shelf": "45 days",
+   "ingredients": [
+    "Dates",
+    "Cashews",
+    "Almonds",
+    "Pistachios",
+    "Pumpkin Seeds",
+    "Watermelon Seeds",
+    "Honey"
+   ],
+   "desc": "The recipe that started it all. Soft dates are slow-cooked and folded with cashews, almonds, pistachios and seeds, then set into melt-in-mouth squares. Naturally sweet from dates and honey, with no refined sugar. Perfect as a morning energy bite or a guilt-free mithai.",
+   "highlights": [
+    "No refined sugar",
+    "Dates & honey sweetened",
+    "100% homemade",
+    "Rich in fibre"
+   ]
+  },
+  {
+   "id": "roasted-salted-dry-fruit-mix",
+   "title": "Roasted & Salted Dry Fruit Mix",
+   "type": "jar",
+   "cats": [
+    "roasted"
+   ],
+   "short": "Seven nuts & seeds kissed with Himalayan pink salt.",
+   "art": {
+    "label": "#2F4A5A",
+    "accent": "#C9A227",
+    "bg": "#E6ECEB"
+   },
+   "variants": [
+    {
+     "t": "150 g",
+     "p": 330,
+     "mrp": null,
+     "sku": "MM-RS-150"
+    },
+    {
+     "t": "400 g",
+     "p": 715,
+     "mrp": null,
+     "sku": "MM-RS-400"
+    },
+    {
+     "t": "800 g",
+     "p": 1389,
+     "mrp": null,
+     "sku": "MM-RS-800"
+    }
+   ],
+   "rating": 4.7,
+   "reviews": 142,
+   "shelf": null,
+   "ingredients": [
+    "Cashews",
+    "Almonds",
+    "Pistachios",
+    "Hazelnuts",
+    "Pumpkin Seeds",
+    "Sunflower Seeds",
+    "Watermelon Seeds",
+    "Pink Salt"
+   ],
+   "desc": "A clean, savoury crunch for chai-time. Cashews, almonds, pistachios and hazelnuts are dry-roasted with three kinds of seeds and finished with a light dusting of Himalayan pink salt. Satisfies the namkeen craving without the fried-snack guilt.",
+   "highlights": [
+    "Himalayan pink salt",
+    "Dry roasted",
+    "No preservatives",
+    "High protein"
+   ]
+  },
+  {
+   "id": "dry-fruit-snack-mix",
+   "title": "Snack Mix",
+   "type": "jar",
+   "cats": [
+    "mixes"
+   ],
+   "short": "A 13-ingredient wellness mix with rose petals & seeds.",
+   "art": {
+    "label": "#8C2F4B",
+    "accent": "#E6C766",
+    "bg": "#F5E4E6"
+   },
+   "variants": [
+    {
+     "t": "150 g",
+     "p": 299,
+     "mrp": null,
+     "sku": "MM-SM-150"
+    },
+    {
+     "t": "400 g",
+     "p": 669,
+     "mrp": 800,
+     "sku": "MM-SM-400"
+    },
+    {
+     "t": "800 g",
+     "p": 1299,
+     "mrp": 1500,
+     "sku": "MM-SM-800"
+    }
+   ],
+   "rating": 4.7,
+   "reviews": 167,
+   "shelf": null,
+   "video": true,
+   "ingredients": [
+    "Almonds",
+    "Cashews",
+    "Pistachios",
+    "Kharek",
+    "Raisins",
+    "Black Currants",
+    "Flax Seeds",
+    "Sunflower Seeds",
+    "Pumpkin Seeds",
+    "Sesame Seeds",
+    "Fennel Seeds",
+    "Rose Petals",
+    "Olive Oil"
+   ],
+   "desc": "Our most colourful jar. Nuts, black and yellow kharek, raisins and currants meet flax, sesame, fennel and sunflower seeds, with a fragrant touch of rose petals. A nutrient-dense handful that works as a mukhwas, a mid-day snack or a breakfast topper.",
+   "highlights": [
+    "13 ingredients",
+    "Fibre-rich seeds",
+    "Rose petal aroma",
+    "No preservatives"
+   ]
+  },
+  {
+   "id": "classic-granola",
+   "title": "Classic Granola",
+   "type": "jar",
+   "cats": [
+    "seeds",
+    "new"
+   ],
+   "short": "Crunchy oats & nuts clustered with jaggery and peanut butter.",
+   "art": {
+    "label": "#B5782B",
+    "accent": "#1F4D3A",
+    "bg": "#F6EBD7"
+   },
+   "variants": [
+    {
+     "t": "400 g",
+     "p": 599,
+     "mrp": 800,
+     "sku": "MM-GR-400"
+    }
+   ],
+   "rating": 4.6,
+   "reviews": 98,
+   "shelf": "90 days",
+   "ingredients": [
+    "Oats",
+    "Almonds",
+    "Cashews",
+    "Pumpkin Seeds",
+    "Sunflower Seeds",
+    "Jaggery",
+    "Peanut Butter"
+   ],
+   "desc": "Breakfast, sorted. Whole oats are baked into golden clusters with almonds, cashews and seeds, bound with jaggery and peanut butter instead of refined sugar. Pour it over milk or curd, or eat it straight from the jar.",
+   "highlights": [
+    "Jaggery sweetened",
+    "No refined sugar",
+    "Baked, not fried",
+    "Fibre-rich oats"
+   ]
+  },
+  {
+   "id": "masala-dryfruit-mix",
+   "title": "Masala Dryfruit Mix",
+   "type": "jar",
+   "cats": [
+    "roasted",
+    "new"
+   ],
+   "short": "Ghee-roasted nuts tossed in our house chatpata masala.",
+   "art": {
+    "label": "#C1440E",
+    "accent": "#E6C766",
+    "bg": "#F8E3D5"
+   },
+   "variants": [
+    {
+     "t": "450 g",
+     "p": 689,
+     "mrp": 700,
+     "sku": "MM-MDM-450"
+    }
+   ],
+   "rating": 4.8,
+   "reviews": 121,
+   "shelf": "60 days",
+   "ingredients": [
+    "Almonds",
+    "Cashews",
+    "Raisins",
+    "Pumpkin Seeds",
+    "Sunflower Seeds",
+    "Spices",
+    "Cow Ghee"
+   ],
+   "desc": "For the namkeen lovers. Almonds, cashews, raisins and seeds are roasted in cow ghee and tossed in a balanced house masala: chatpata, not fiery. Your new favourite companion for chai, travel and movie nights.",
+   "highlights": [
+    "Roasted in cow ghee",
+    "House masala",
+    "Mild & chatpata",
+    "No preservatives"
+   ]
+  },
+  {
+   "id": "protein-beans-mix",
+   "title": "Protein Beans Mix",
+   "type": "jar",
+   "cats": [
+    "seeds",
+    "roasted",
+    "new"
+   ],
+   "short": "Roasted soy, edamame & black beans: plant protein crunch.",
+   "art": {
+    "label": "#4E6B2F",
+    "accent": "#E6C766",
+    "bg": "#E9EFDD"
+   },
+   "variants": [
+    {
+     "t": "300 g",
+     "p": 499,
+     "mrp": 550,
+     "sku": "MM-PB-300"
+    },
+    {
+     "t": "Pack of 2 (300 g each)",
+     "p": 950,
+     "mrp": 1100,
+     "sku": "MM-PB-2X300"
+    }
+   ],
+   "rating": 4.6,
+   "reviews": 76,
+   "shelf": null,
+   "ingredients": [
+    "Soybeans",
+    "Edamame",
+    "Black Beans"
+   ],
+   "desc": "A light, crunchy hit of plant protein. Soybeans, edamame and black beans are slow-roasted without any added flavours or preservatives. Great after a workout, between meetings, or as a smart swap for chips.",
+   "highlights": [
+    "Plant protein",
+    "No added flavours",
+    "Roasted, not fried",
+    "Gym-bag friendly"
+   ]
+  },
+  {
+   "id": "seed-mix-with-haldi-roasted-salted",
+   "title": "Seed Mix with Haldi",
+   "type": "jar",
+   "cats": [
+    "seeds",
+    "roasted",
+    "new"
+   ],
+   "short": "Pumpkin, sunflower & watermelon seeds with turmeric & pink salt.",
+   "art": {
+    "label": "#D9961A",
+    "accent": "#1F4D3A",
+    "bg": "#FBEFD0"
+   },
+   "variants": [
+    {
+     "t": "150 g",
+     "p": 229,
+     "mrp": 299,
+     "sku": "MM-SH-150"
+    },
+    {
+     "t": "400 g",
+     "p": 560,
+     "mrp": 599,
+     "sku": "MM-SH-400"
+    }
+   ],
+   "rating": 4.7,
+   "reviews": 89,
+   "shelf": null,
+   "ingredients": [
+    "Pumpkin Seeds",
+    "Sunflower Seeds",
+    "Watermelon Seeds",
+    "Turmeric",
+    "Pink Salt"
+   ],
+   "desc": "Tiny seeds, big goodness. Three seeds are gently roasted with haldi and pink salt for an earthy, mildly salty crunch. Sprinkle on salads, poha and soups, or snack on it by the spoonful.",
+   "highlights": [
+    "With turmeric",
+    "Pink salt",
+    "Rich in minerals",
+    "Salad topper"
+   ]
+  },
+  {
+   "id": "masala-cashew",
+   "title": "Masala Cashew",
+   "type": "jar",
+   "cats": [
+    "roasted"
+   ],
+   "short": "Whole cashews coated in authentic Indian spices.",
+   "art": {
+    "label": "#9A4A12",
+    "accent": "#E6C766",
+    "bg": "#F6E6D2"
+   },
+   "variants": [
+    {
+     "t": "400 g",
+     "p": 700,
+     "mrp": null,
+     "sku": "MM-MC-400"
+    },
+    {
+     "t": "800 g",
+     "p": 1349,
+     "mrp": null,
+     "sku": "MM-MC-800"
+    }
+   ],
+   "rating": 4.8,
+   "reviews": 133,
+   "shelf": null,
+   "ingredients": [
+    "Cashews",
+    "Spices"
+   ],
+   "desc": "Plump whole cashews, roasted till crisp and coated in a bold blend of Indian spices. No artificial flavours, no preservatives: just a seriously addictive tea-time snack.",
+   "highlights": [
+    "Whole cashews",
+    "Bold spices",
+    "No artificial flavour",
+    "Party favourite"
+   ]
+  },
+  {
+   "id": "trail-mix",
+   "title": "Trail Mix",
+   "type": "jar",
+   "cats": [
+    "mixes"
+   ],
+   "short": "Nuts, seeds, kharek & three kinds of raisins.",
+   "art": {
+    "label": "#2E6B5E",
+    "accent": "#E6C766",
+    "bg": "#E2EFEA"
+   },
+   "variants": [
+    {
+     "t": "400 g",
+     "p": 610,
+     "mrp": 699,
+     "sku": "MM-TM-400"
+    }
+   ],
+   "rating": 4.6,
+   "reviews": 64,
+   "shelf": null,
+   "ingredients": [
+    "Almonds",
+    "Cashews",
+    "Sunflower Seeds",
+    "Pumpkin Seeds",
+    "Yellow Kharek",
+    "Green Raisins",
+    "Black Raisins"
+   ],
+   "desc": "Built for long days and longer drives. Crunchy nuts and seeds balanced with naturally sweet kharek and raisins: steady energy without the sugar crash.",
+   "highlights": [
+    "Naturally sweet",
+    "Travel friendly",
+    "Steady energy",
+    "No preservatives"
+   ]
+  },
+  {
+   "id": "seven-in-one-combo",
+   "title": "Seven In One Combo",
+   "type": "combo",
+   "cats": [
+    "combos",
+    "bestseller"
+   ],
+   "short": "All 7 bestsellers in full-size jars. Our biggest saving.",
+   "art": {
+    "label": "#1F4D3A",
+    "accent": "#C9A227",
+    "bg": "#E8F0E6",
+    "jars": [
+     "#1F4D3A",
+     "#C1440E",
+     "#D9961A",
+     "#4E6B2F",
+     "#B5782B"
+    ]
+   },
+   "variants": [
+    {
+     "t": "7 full packs",
+     "p": 3899,
+     "mrp": 4247,
+     "sku": "MM-C7"
+    }
+   ],
+   "rating": 4.9,
+   "reviews": 58,
+   "shelf": null,
+   "contains": [
+    "Khajur Pak (400 g)",
+    "Dry Fruit Mix (400 g)",
+    "Roasted & Salted Mix (400 g)",
+    "Masala Dryfruit Mix (450 g)",
+    "Seed Mix with Haldi (400 g)",
+    "Protein Beans Mix (300 g)",
+    "Classic Granola (400 g)"
+   ],
+   "ingredients": [
+    "Dates",
+    "Almonds",
+    "Cashews",
+    "Pistachios",
+    "Oats",
+    "Soybeans",
+    "Pumpkin Seeds"
+   ],
+   "desc": "The complete Meva Mantra pantry in one box. Seven full-size packs covering energy, protein, immunity and pure snacking joy: enough for the whole family for weeks.",
+   "highlights": [
+    "7 full-size packs",
+    "Save ₹348",
+    "Family pack",
+    "Great for gifting"
+   ]
+  },
+  {
+   "id": "snacking-combo",
+   "title": "Snacking Combo (Small Pack)",
+   "type": "combo",
+   "cats": [
+    "combos"
+   ],
+   "short": "Seven trial-size jars: find your favourite.",
+   "art": {
+    "label": "#2E6B5E",
+    "accent": "#C9A227",
+    "bg": "#E2EFEA",
+    "jars": [
+     "#8C2F4B",
+     "#2F4A5A",
+     "#C1440E",
+     "#B5782B",
+     "#4E6B2F"
+    ]
+   },
+   "variants": [
+    {
+     "t": "7 trial packs",
+     "p": 1799,
+     "mrp": null,
+     "sku": "MM-C7S"
+    }
+   ],
+   "rating": 4.7,
+   "reviews": 41,
+   "shelf": null,
+   "contains": [
+    "Dry Fruit Mix (150 g)",
+    "Snack Mix (150 g)",
+    "Roasted & Salted Mix (150 g)",
+    "Masala Dryfruit Mix (200 g)",
+    "Seed Mix with Haldi (150 g)",
+    "Protein Beans Mix (100 g)",
+    "Classic Granola (150 g)"
+   ],
+   "ingredients": [
+    "Almonds",
+    "Cashews",
+    "Oats",
+    "Soybeans",
+    "Pumpkin Seeds",
+    "Raisins"
+   ],
+   "desc": "Can’t decide? Try them all. Seven smaller packs of our most-loved blends: the perfect starter kit, office drawer stash or gift for a health-conscious friend.",
+   "highlights": [
+    "7 trial packs",
+    "Starter kit",
+    "Office stash",
+    "Gift ready"
+   ]
+  },
+  {
+   "id": "mix-dryfruit-khajur-pak-combo",
+   "title": "Dry Fruit Mix + Khajur Pak Combo",
+   "type": "combo",
+   "cats": [
+    "combos",
+    "bestseller",
+    "diwali",
+    "gifting"
+   ],
+   "short": "Our two bestsellers together: 400 g each.",
+   "art": {
+    "label": "#1F4D3A",
+    "accent": "#C9A227",
+    "bg": "#F3EBD6",
+    "jars": [
+     "#1F4D3A"
+    ],
+    "withBox": true
+   },
+   "variants": [
+    {
+     "t": "400 g + 400 g",
+     "p": 1220,
+     "mrp": 1239,
+     "sku": "MM-C2"
+    }
+   ],
+   "rating": 4.9,
+   "reviews": 172,
+   "shelf": null,
+   "contains": [
+    "Dry Fruit Mix (400 g)",
+    "Dry Fruit Khajur Pak (400 g)"
+   ],
+   "ingredients": [
+    "Almonds",
+    "Cashews",
+    "Pistachios",
+    "Dates",
+    "Cranberries",
+    "Honey"
+   ],
+   "desc": "Everyday snacking meets traditional indulgence. One jar of our ghee-roasted Dry Fruit Mix and one box of dates-sweetened Khajur Pak: the combo our customers gift the most.",
+   "highlights": [
+    "Bestseller pair",
+    "Festive favourite",
+    "No refined sugar",
+    "Gift ready"
+   ]
+  },
+  {
+   "id": "rakhi-gift-genuine-leather-purse-khajur-pak-400-g-mix-dryfruit-150g",
+   "title": "Gift Your Sister Hamper",
+   "type": "purse",
+   "cats": [
+    "gifting",
+    "rakhi"
+   ],
+   "short": "Handmade Ajrakh-print leather purse + Khajur Pak + Dry Fruit Mix.",
+   "art": {
+    "label": "#7A1F2B",
+    "accent": "#C9A227",
+    "bg": "#F5E4DF"
+   },
+   "option": "Color",
+   "variants": [
+    {
+     "t": "Maroon",
+     "p": 2899,
+     "mrp": null,
+     "sku": "MM-RH-MRN",
+     "swatch": "#7A1F2B"
+    },
+    {
+     "t": "Black",
+     "p": 2899,
+     "mrp": null,
+     "sku": "MM-RH-BLK",
+     "swatch": "#222222"
+    },
+    {
+     "t": "Blue",
+     "p": 2899,
+     "mrp": null,
+     "sku": "MM-RH-BLU",
+     "swatch": "#1E3A6B"
+    }
+   ],
+   "rating": 4.9,
+   "reviews": 23,
+   "shelf": null,
+   "limited": "Only 15 hampers made",
+   "contains": [
+    "Handmade genuine leather purse (Ajrakh print)",
+    "Dry Fruit Khajur Pak (400 g)",
+    "Dry Fruit Mix (150 g)"
+   ],
+   "ingredients": [
+    "Dates",
+    "Almonds",
+    "Cashews",
+    "Pistachios"
+   ],
+   "desc": "A Raksha Bandhan gift she will actually use. A handmade genuine leather purse with traditional Ajrakh print, paired with our Khajur Pak and Dry Fruit Mix, packed in a festive gift box.",
+   "highlights": [
+    "Handmade leather",
+    "Ajrakh print",
+    "Limited edition",
+    "Gift packed"
+   ]
+  },
+  {
+   "id": "rakshabandhan-special-khajur-pak-with-rakhi",
+   "title": "Rakhi Special: Khajur Pak with Rakhi",
+   "type": "box",
+   "cats": [
+    "gifting",
+    "rakhi"
+   ],
+   "short": "Khajur Pak, a handmade rakhi & a greeting card.",
+   "art": {
+    "label": "#B23A48",
+    "accent": "#E6C766",
+    "bg": "#F7E1E2"
+   },
+   "variants": [
+    {
+     "t": "Hamper",
+     "p": 599,
+     "mrp": 650,
+     "sku": "MM-RK1",
+     "soldOut": true
+    }
+   ],
+   "rating": 4.8,
+   "reviews": 47,
+   "shelf": "45 days",
+   "contains": [
+    "Dry Fruit Khajur Pak",
+    "Handmade Rakhi",
+    "Greeting Card"
+   ],
+   "ingredients": [
+    "Dates",
+    "Cashews",
+    "Almonds",
+    "Pistachios",
+    "Honey"
+   ],
+   "desc": "Sweetness, tradition and emotion in one box. Our Khajur Pak with a beautiful rakhi and a heartfelt greeting card, ready to send to your brother anywhere in India.",
+   "highlights": [
+    "Ready to gift",
+    "Ships pan-India",
+    "No refined sugar",
+    "Seasonal"
+   ]
+  },
+  {
+   "id": "rakhi-greeting-card",
+   "title": "Rakhi + Greeting Card",
+   "type": "card",
+   "cats": [
+    "rakhi"
+   ],
+   "short": "A beaded rakhi with a warm Raksha Bandhan card.",
+   "art": {
+    "label": "#B23A48",
+    "accent": "#E6C766",
+    "bg": "#FBEDE3"
+   },
+   "variants": [
+    {
+     "t": "Set",
+     "p": 95,
+     "mrp": null,
+     "sku": "MM-RC",
+     "soldOut": true
+    }
+   ],
+   "rating": 4.5,
+   "reviews": 19,
+   "shelf": null,
+   "ingredients": [],
+   "desc": "An elegant beaded rakhi with traditional detailing, paired with a thoughtfully written greeting card. Add it to any order to make it a Rakhi gift.",
+   "highlights": [
+    "Handmade rakhi",
+    "Greeting card",
+    "Add-on gift",
+    "Seasonal"
+   ]
+  },
+  {
+   "id": "diwali-gift-hamper",
+   "title": "Diwali Gift Hamper",
+   "type": "hamper",
+   "cats": [
+    "gifting",
+    "diwali"
+   ],
+   "short": "A festive hamper of jars and sweets for the whole family.",
+   "art": {
+    "label": "#1F3A6B",
+    "accent": "#E6C766",
+    "bg": "#EEE6D6"
+   },
+   "variants": [
+    {
+     "t": "Hamper",
+     "p": 1189,
+     "mrp": null,
+     "sku": "MM-DH",
+     "soldOut": true
+    }
+   ],
+   "rating": 4.8,
+   "reviews": 36,
+   "shelf": null,
+   "ingredients": [
+    "Almonds",
+    "Cashews",
+    "Dates",
+    "Pistachios"
+   ],
+   "desc": "Light up Diwali with a hamper that is as healthy as it is beautiful. A curated mix of our bestsellers in a premium festive box, perfect for family, friends and clients.",
+   "highlights": [
+    "Festive packaging",
+    "Curated bestsellers",
+    "Corporate friendly",
+    "Seasonal"
+   ]
+  },
+  {
+   "id": "khajur-pak-gifting-box-1",
+   "title": "Khajur Pak Gifting Box: Emerald",
+   "type": "box",
+   "cats": [
+    "gifting",
+    "khajur",
+    "diwali"
+   ],
+   "short": "Premium emerald box with 10 or 50 Khajur Pak pieces.",
+   "art": {
+    "label": "#1F6B4E",
+    "accent": "#E6C766",
+    "bg": "#E4EFE8",
+    "window": true
+   },
+   "variants": [
+    {
+     "t": "10 Pcs",
+     "p": 2000,
+     "mrp": null,
+     "sku": "MM-GB1-10",
+     "soldOut": true
+    },
+    {
+     "t": "50 Pcs",
+     "p": 8100,
+     "mrp": null,
+     "sku": "MM-GB1-50",
+     "soldOut": true
+    }
+   ],
+   "rating": 4.8,
+   "reviews": 12,
+   "shelf": "45 days",
+   "ingredients": [
+    "Dates",
+    "Cashews",
+    "Almonds",
+    "Pistachios",
+    "Honey"
+   ],
+   "desc": "Individually set Khajur Pak pieces in a windowed emerald gift box with gold foil detailing. Choose 10 pieces for family or 50 for corporate and wedding gifting.",
+   "highlights": [
+    "Windowed gift box",
+    "Gold foil finish",
+    "Bulk option",
+    "Corporate gifting"
+   ]
+  },
+  {
+   "id": "khajur-pak-gifting-box-2",
+   "title": "Khajur Pak Gifting Box: Royal Plum",
+   "type": "box",
+   "cats": [
+    "gifting",
+    "khajur"
+   ],
+   "short": "Royal plum box with 10 or 50 Khajur Pak pieces.",
+   "art": {
+    "label": "#5B2A5E",
+    "accent": "#E6C766",
+    "bg": "#EFE4EF",
+    "window": true
+   },
+   "variants": [
+    {
+     "t": "10 Pcs",
+     "p": 2000,
+     "mrp": null,
+     "sku": "MM-GB2-10",
+     "soldOut": true
+    },
+    {
+     "t": "50 Pcs",
+     "p": 8100,
+     "mrp": null,
+     "sku": "MM-GB2-50",
+     "soldOut": true
+    }
+   ],
+   "rating": 4.7,
+   "reviews": 9,
+   "shelf": "45 days",
+   "ingredients": [
+    "Dates",
+    "Cashews",
+    "Almonds",
+    "Pistachios",
+    "Honey"
+   ],
+   "desc": "A regal plum-and-gold box holding hand-cut Khajur Pak pieces. A sweet that feels luxurious and stays healthy: no refined sugar, ever.",
+   "highlights": [
+    "Windowed gift box",
+    "Gold foil finish",
+    "Bulk option",
+    "Wedding favours"
+   ]
+  },
+  {
+   "id": "khajur-pak-gifting-box-3",
+   "title": "Khajur Pak Gifting Box: Burgundy",
+   "type": "box",
+   "cats": [
+    "gifting",
+    "khajur",
+    "diwali"
+   ],
+   "short": "Burgundy & gold gift box, 10 premium pieces.",
+   "art": {
+    "label": "#7A1F2B",
+    "accent": "#E6C766",
+    "bg": "#F4E3E1",
+    "window": true
+   },
+   "variants": [
+    {
+     "t": "10 Pcs",
+     "p": 3300,
+     "mrp": null,
+     "sku": "MM-GB3-10"
+    }
+   ],
+   "rating": 4.9,
+   "reviews": 15,
+   "shelf": "45 days",
+   "ingredients": [
+    "Dates",
+    "Cashews",
+    "Almonds",
+    "Pistachios",
+    "Honey"
+   ],
+   "desc": "Ten generous pieces of our signature Khajur Pak, each topped with slivered nuts, in a burgundy box with a leaf-gold window. Our most-loved festive gift.",
+   "highlights": [
+    "Premium pieces",
+    "Leaf-gold window box",
+    "Festive favourite",
+    "Ships pan-India"
+   ]
+  },
+  {
+   "id": "khajur-pak-gifting-box-4",
+   "title": "Khajur Pak Gifting Box: Peacock Teal",
+   "type": "box",
+   "cats": [
+    "gifting",
+    "khajur",
+    "diwali"
+   ],
+   "short": "Peacock-teal festive box, 10 premium pieces.",
+   "art": {
+    "label": "#1B6B73",
+    "accent": "#E6C766",
+    "bg": "#E0EFEF",
+    "window": true
+   },
+   "variants": [
+    {
+     "t": "10 Pcs",
+     "p": 3300,
+     "mrp": null,
+     "sku": "MM-GB4-10"
+    }
+   ],
+   "rating": 4.9,
+   "reviews": 11,
+   "shelf": "45 days",
+   "ingredients": [
+    "Dates",
+    "Cashews",
+    "Almonds",
+    "Pistachios",
+    "Honey"
+   ],
+   "desc": "A peacock-teal box with festive gold motifs and ten premium Khajur Pak pieces inside. Thoughtful, healthy and unforgettable.",
+   "highlights": [
+    "Premium pieces",
+    "Festive motifs",
+    "No refined sugar",
+    "Ships pan-India"
+   ]
+  },
+  {
+   "id": "sweet-dryfruit-gift-box",
+   "title": "Sweet & Dry Fruit Gift Box",
+   "type": "hamper",
+   "cats": [
+    "gifting"
+   ],
+   "short": "Khajur Pak and dry fruit jars in one keepsake box.",
+   "art": {
+    "label": "#8C2F4B",
+    "accent": "#E6C766",
+    "bg": "#F3E6EA"
+   },
+   "variants": [
+    {
+     "t": "Gift Box",
+     "p": 1299,
+     "mrp": null,
+     "sku": "MM-SDB",
+     "soldOut": true
+    }
+   ],
+   "rating": 4.7,
+   "reviews": 21,
+   "shelf": null,
+   "ingredients": [
+    "Dates",
+    "Almonds",
+    "Cashews",
+    "Pistachios"
+   ],
+   "desc": "The best of both worlds: our Khajur Pak with a jar of dry fruit mix, nestled in a reusable keepsake box. Made for housewarmings, thank-yous and festive visits.",
+   "highlights": [
+    "Reusable box",
+    "Sweet + savoury",
+    "Gift ready",
+    "Seasonal"
+   ]
+  }
+ ],
+ "REVIEWS": [
+  {
+   "name": "Priya S.",
+   "city": "Ahmedabad",
+   "r": 5,
+   "product": "dryfruit-khajur-pak",
+   "text": "Tastes exactly like the Khajur Pak my nani used to make. Not overly sweet, and my kids finish a box in a week!"
+  },
+  {
+   "name": "Rohan M.",
+   "city": "Mumbai",
+   "r": 5,
+   "product": "mix-dryfruit",
+   "text": "Finally a dry fruit mix that tastes fresh. You can actually smell the ghee. My daily office snack now."
+  },
+  {
+   "name": "Ananya K.",
+   "city": "Bengaluru",
+   "r": 5,
+   "product": "seven-in-one-combo",
+   "text": "Ordered the 7-in-1 combo for my parents. Packaging was premium and every jar was a hit."
+  },
+  {
+   "name": "Vikram T.",
+   "city": "Pune",
+   "r": 4,
+   "product": "protein-beans-mix",
+   "text": "Great post-workout crunch. Would love a spicy version too!"
+  },
+  {
+   "name": "Meera J.",
+   "city": "Surat",
+   "r": 5,
+   "product": "masala-dryfruit-mix",
+   "text": "Chatpata but not too spicy. Perfect with evening chai. Already reordered twice."
+  },
+  {
+   "name": "Arjun P.",
+   "city": "Delhi",
+   "r": 5,
+   "product": "khajur-pak-gifting-box-3",
+   "text": "Gifted these boxes to my team for Diwali. Everyone asked where they were from!"
+  }
+ ],
+ "FAQS": [
+  {
+   "cat": "Orders & Payment",
+   "q": "Which payment methods do you accept?",
+   "a": "UPI (GPay, PhonePe, Paytm), debit/credit cards, net banking, wallets and Cash on Delivery. Prepaid orders get an extra 5% off automatically at checkout."
+  },
+  {
+   "cat": "Orders & Payment",
+   "q": "Can I cancel my order?",
+   "a": "Yes, within 2 hours of placing it. After that the order moves to packing. If you need help, WhatsApp us with your order ID."
+  },
+  {
+   "cat": "Orders & Payment",
+   "q": "How do I apply a coupon?",
+   "a": "Enter the code in the cart or on the checkout page. Try MANTRA10 for 10% off your first order above ₹499."
+  },
+  {
+   "cat": "Shipping & Delivery",
+   "q": "How long does delivery take?",
+   "a": "We pack fresh after you order (2–3 working days), dispatch within 1–2 days, and couriers deliver in 3–7 working days depending on your pincode. Use the pincode checker on any product page for an estimate."
+  },
+  {
+   "cat": "Shipping & Delivery",
+   "q": "Is shipping free?",
+   "a": "Shipping is free on orders above ₹500. A flat ₹49 is charged on smaller orders."
+  },
+  {
+   "cat": "Shipping & Delivery",
+   "q": "How do I track my order?",
+   "a": "You get tracking on WhatsApp and email once shipped. You can also use the Track Order page with your order ID and mobile number."
+  },
+  {
+   "cat": "Returns & Refunds",
+   "q": "What if my order arrives damaged?",
+   "a": "Tell us within 48 hours of delivery with your order ID and photos/video. We will arrange a free replacement or refund."
+  },
+  {
+   "cat": "Returns & Refunds",
+   "q": "Can I return an opened jar?",
+   "a": "For hygiene reasons, opened or partially consumed food items cannot be returned unless they were damaged or incorrect."
+  },
+  {
+   "cat": "Products & Storage",
+   "q": "Do your products contain preservatives?",
+   "a": "No. Everything is made in small batches with natural ingredients and no preservatives, artificial colours, flavours or sweeteners."
+  },
+  {
+   "cat": "Products & Storage",
+   "q": "How should I store the jars?",
+   "a": "Close the lid tightly and store in a cool, dry place away from sunlight. Khajur Pak keeps best in the refrigerator during summer."
+  },
+  {
+   "cat": "Products & Storage",
+   "q": "Is Khajur Pak suitable for diabetics?",
+   "a": "It has no refined sugar but is naturally sweet from dates and honey. Please consult your doctor before including it in a diabetic diet."
+  },
+  {
+   "cat": "Gifting & Bulk",
+   "q": "Do you take bulk or corporate orders?",
+   "a": "Yes! We customise boxes with your logo and message for corporate gifting, weddings and festivals. Use the bulk enquiry form on the Contact page."
+  },
+  {
+   "cat": "Gifting & Bulk",
+   "q": "Can I add a gift message?",
+   "a": "Yes. Tick “Gift wrap + message” in the cart (₹49) and write your note. We hand-write it on a card."
+  }
+ ],
+ "POLICIES": {
+  "shipping": {
+   "title": "Shipping Policy",
+   "body": [
+    [
+     "Freshly packed",
+     "Every order is packed fresh after you place it. Preparation takes 2–3 working days."
+    ],
+    [
+     "Dispatch & delivery",
+     "Orders are dispatched within 1–2 working days of preparation through trusted courier partners and usually reach you within 3–7 working days, depending on your location."
+    ],
+    [
+     "Shipping charges",
+     "Free shipping on orders above ₹500. A flat ₹49 applies to smaller orders."
+    ],
+    [
+     "Tracking",
+     "Tracking details are shared on WhatsApp and email as soon as your parcel is dispatched."
+    ],
+    [
+     "Delivery attempts",
+     "Couriers make up to three delivery attempts. Undelivered parcels return to us; prepaid refunds are processed after deducting two-way shipping."
+    ],
+    [
+     "Changes to your order",
+     "Address or item changes are possible until the order is packed. Contact us on WhatsApp quickly."
+    ]
+   ]
+  },
+  "refund": {
+   "title": "Returns, Refunds & Cancellation",
+   "body": [
+    [
+     "Damaged or incorrect items",
+     "Report within 48 hours of delivery with your order ID and clear photos/video. We will arrange a replacement or refund after verification."
+    ],
+    [
+     "Return conditions",
+     "Products must be unused and in original packaging. Opened or partially consumed food items cannot be returned unless damaged or incorrect."
+    ],
+    [
+     "Refunds",
+     "Approved refunds go back to the original payment method within 5–7 working days, or as store credit if you prefer."
+    ],
+    [
+     "Cancellation",
+     "Orders can be cancelled within 2 hours of placing them for a full refund. After packing begins, cancellation may not be possible."
+    ],
+    [
+     "Non-returnable",
+     "Clearance items, festive hampers after delivery and personalised gift boxes."
+    ]
+   ]
+  },
+  "privacy": {
+   "title": "Privacy Policy",
+   "body": [
+    [
+     "What we collect",
+     "Name, contact details, delivery address and order history, only what we need to process and deliver your orders."
+    ],
+    [
+     "How we use it",
+     "To fulfil orders, send order updates, provide support and, only if you opt in, share offers."
+    ],
+    [
+     "Payments",
+     "Payments are processed by secure, PCI-DSS compliant payment partners. We never store your card details."
+    ],
+    [
+     "Your choices",
+     "You can update your details or request deletion of your data anytime by writing to us."
+    ]
+   ]
+  },
+  "terms": {
+   "title": "Terms of Service",
+   "body": [
+    [
+     "Using this site",
+     "By using this website you agree to these terms. Product images are illustrative; actual packaging may vary slightly."
+    ],
+    [
+     "Pricing",
+     "Prices are in INR and include applicable taxes. We may correct pricing errors and cancel affected orders with a full refund."
+    ],
+    [
+     "Offers",
+     "Coupons cannot be combined unless stated. Prepaid discount applies to online payments only."
+    ],
+    [
+     "Liability",
+     "Our products are food items made in a kitchen that handles nuts, seeds and dairy. Please check ingredients for allergens."
+    ]
+   ]
+  }
+ },
+ "POSTS": [
+  {
+   "id": "muththi-a-day",
+   "title": "One Muththi a Day: Why a Handful of Dry Fruits Matters",
+   "date": "2026-11-12",
+   "mins": 4,
+   "art": "mix-dryfruit",
+   "tag": "Wellness",
+   "excerpt": "Small habit, big difference: how a daily handful of nuts and seeds supports energy, focus and heart health.",
+   "body": [
+    "A muththi, roughly 30 grams, is the sweet spot for most adults. It is enough to give you healthy fats, plant protein and fibre without overdoing calories.",
+    "Almonds and pistachios bring vitamin E and protein; cashews add magnesium; pumpkin and sunflower seeds contribute zinc and iron. Together they keep you full longer than biscuits or chips.",
+    "The trick is consistency. Keep a jar on your desk, carry a small box in your bag, and swap one packaged snack a day for a handful of real food."
+   ]
+  },
+  {
+   "id": "khajur-pak-story",
+   "title": "The Story of Our Khajur Pak",
+   "date": "2026-10-28",
+   "mins": 5,
+   "art": "dryfruit-khajur-pak",
+   "tag": "Our Kitchen",
+   "excerpt": "From a family recipe to your doorstep: what makes ghar-jaisa Khajur Pak different.",
+   "body": [
+    "Khajur Pak is one of those sweets every Gujarati home has a version of. Ours uses only dates and a little honey for sweetness: no sugar syrup, no shortcuts.",
+    "The dates are slow-cooked until they melt, then folded with roasted cashews, almonds, pistachios and seeds. It is set, cut by hand and packed the same day.",
+    "The result is a sweet you can eat at breakfast without guilt, and one that grandparents and kids both love."
+   ]
+  },
+  {
+   "id": "office-snacking",
+   "title": "5 Desk Snacks That Beat the 4 PM Slump",
+   "date": "2026-10-05",
+   "mins": 3,
+   "art": "protein-beans-mix",
+   "tag": "Snacking",
+   "excerpt": "Swap the vending machine for these protein-packed, no-junk options.",
+   "body": [
+    "The 4 PM slump is real, and sugary snacks only make it worse. Protein and fibre keep energy steady.",
+    "Try roasted protein beans, a masala dry fruit mix, seed mix with haldi, granola with curd, or two squares of Khajur Pak with green tea.",
+    "Pre-portion them into small boxes on Sunday so the healthy choice is also the easy one."
+   ]
+  },
+  {
+   "id": "diwali-gifting-guide",
+   "title": "The Healthy Diwali Gifting Guide",
+   "date": "2026-09-20",
+   "mins": 4,
+   "art": "khajur-pak-gifting-box-4",
+   "tag": "Gifting",
+   "excerpt": "Gifts that feel premium and are actually good for the people you love.",
+   "body": [
+    "Festive gifting does not have to mean boxes of sugar. Dry fruit hampers and dates-based sweets feel just as indulgent.",
+    "For family, pick a combo that covers sweet and savoury. For corporate teams, windowed Khajur Pak boxes with a printed message look premium and travel well.",
+    "Order early: festive batches are made fresh and limited."
+   ]
+  }
+ ]
+}

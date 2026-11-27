@@ -1,0 +1,16 @@
+# Local PostgreSQL for Meva Mantra (port 5440 to avoid clashing with other projects)
+services:
+  db:
+    image: postgres:16
+    container_name: mevamantra-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: mevamantra
+      POSTGRES_PASSWORD: mevamantra_local
+      POSTGRES_DB: mevamantra
+    ports:
+      - "127.0.0.1:5440:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:

@@ -1,0 +1,16 @@
+{
+  "name": "meva-mantra",
+  "private": true,
+  "scripts": {
+    "db:up": "docker compose up -d db",
+    "db:down": "docker compose stop db",
+    "dev": "pnpm -r --parallel --filter ./apps/* dev",
+    "dev:api": "pnpm --filter api dev",
+    "dev:web": "pnpm --filter web dev",
+    "dev:admin": "pnpm --filter admin dev",
+    "seed": "pnpm --filter api db:seed",
+    "test:api": "node apps/api/test/smoke.mjs",
+    "db:backup": "mkdir -p backups && docker exec mevamantra-db pg_dump -U mevamantra mevamantra | gzip > backups/mevamantra-$(date +%F-%H%M).sql.gz && ls -lh backups | tail -1",
+    "build": "pnpm --filter api build && pnpm --filter web build && pnpm --filter admin build"
+  }
+}

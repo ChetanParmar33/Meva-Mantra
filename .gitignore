@@ -1,0 +1,27 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# secrets: never commit (use the .env.example files)
+.env
+.env.*
+!.env.example
+
+# build output & caches
+dist/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# generated (run `pnpm install` → prisma generate)
+apps/api/src/generated/
+
+# runtime data
+apps/api/uploads/
+backups/
+
+# misc
+.DS_Store
+*.log
+coverage/
