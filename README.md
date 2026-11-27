@@ -38,6 +38,11 @@ Local dev mein:
 - **Emails** API console par print hote hain jab tak `SMTP_URL` na ho.
 - Admin login `.env` ke `ADMIN_EMAIL` / `ADMIN_PASSWORD` se (seed karta hai). Pehli baar ke baad Admin → Settings se password badlo.
 
+## Phone / tablet par dekhna (same Wi-Fi)
+
+Computer ka LAN IP nikalo (`ip -4 addr` / `ipconfig`), phir phone par kholo: `http://<IP>:3100` (website) aur `http://<IP>:3101` (admin).
+Browser kabhi API ko seedha call nahi karta: website/admin apne hi address par `/api` aur `/uploads` maangte hain, aur `next.config.ts` unhe API tak pahuncha deta hai. Isliye login, cart, checkout aur photos phone par bhi chalte hain.
+
 ## Features
 
 **Website:** home (hero slider, categories, bestseller tabs, combo spotlight with timer, story, comparison, process, gifting, reviews, journal, FAQ, newsletter), shop (collections, search, filters, sort, pagination), product (gallery + zoom, sizes/colours, pincode delivery estimate, offers, accordions, frequently bought together, reviews + write review, related, recently viewed, sticky add-to-cart), cart drawer + cart page (coupons, gift wrap, free-shipping bar), 3-step checkout (OTP login → address with pincode autofill → UPI/card/netbanking via Razorpay or COD, 5% prepaid discount), account (orders, addresses, profile), wishlist, track order, about, contact + bulk enquiry, FAQ, policies, blog, SEO (metadata, sitemap, robots, JSON-LD, real HTTP 404 for unknown product/blog/policy URLs via `src/proxy.ts`), generated product artwork served as cacheable SVG files (`/art/...`, replaced by uploaded photos), mobile-friendly, WhatsApp click-to-chat.

@@ -20,8 +20,8 @@
 
 - [ ] `apps/api/.env`: `NODE_ENV=production`, naya lamba `JWT_SECRET` (`node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`)
 - [ ] Admin password badlo (Admin → Settings → Change password). `ADMIN_PASSWORD` env se hata do
-- [ ] `CORS_ORIGINS=https://mevamantra.in,https://admin.mevamantra.in`, `PUBLIC_URL=https://api.mevamantra.in`
-- [ ] Website/admin: `NEXT_PUBLIC_API_URL=https://api.mevamantra.in/api`; website server-side `API_URL=http://127.0.0.1:4100/api`
+- [ ] Website + admin: `API_URL=http://127.0.0.1:4100/api`, `NEXT_PUBLIC_API_URL=/api` (browser calls go through the site's own `/api` proxy, so login cookies are first-party). API: `PUBLIC_URL=""` (relative image URLs).
+- [ ] Aage wala proxy (Caddy/Nginx) **X-Forwarded-For** set kare, taaki API ko asli customer IP mile (spam limit isi par chalti hai). Caddy default theek hai; Nginx mein `proxy_set_header X-Forwarded-For $remote_addr;` (client ka bheja header aage mat jaane do).
 - [ ] `SMTP_URL` + `MAIL_FROM` set karo (email OTP aur order emails ke liye)
 - [ ] Razorpay **live** keys (`RAZORPAY_KEY_ID/SECRET`). Pehle test keys se ek poora order test karo.
 - [ ] Razorpay Dashboard → Webhooks: URL `https://api.mevamantra.in/api/payments/razorpay/webhook`, events `payment.captured`, `payment.failed`, ek secret banao aur wahi `RAZORPAY_WEBHOOK_SECRET` mein daalo. Isse customer browser band kar de tab bhi order confirm hota hai.
@@ -54,12 +54,13 @@ mevamantra.in, www.mevamantra.in {
 admin.mevamantra.in {
   reverse_proxy 127.0.0.1:3101
 }
-api.mevamantra.in {
+api.mevamantra.in {               # optional: only for Razorpay webhooks / external access
   reverse_proxy 127.0.0.1:4100
 }
 ```
+Website aur admin `/api` ko khud API tak proxy karte hain, isliye customers ke liye alag API domain zaroori nahi. Razorpay webhook URL `https://mevamantra.in/api/payments/razorpay/webhook` bhi chalega.
 
-Cookies: website (`mevamantra.in`) aur API (`api.mevamantra.in`) same-site hain, isliye login cookies `SameSite=Lax` ke saath kaam karti hain. `NODE_ENV=production` par cookies `Secure` ho jaati hain (HTTPS zaroori).
+Cookies: login cookies website/admin ke apne domain par `/api` proxy se set hoti hain (first-party, `SameSite=Lax`). `NODE_ENV=production` par cookies `Secure` ho jaati hain (HTTPS zaroori).
 
 ## 4. Backup se restore
 

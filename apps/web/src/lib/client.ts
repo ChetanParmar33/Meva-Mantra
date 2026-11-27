@@ -1,5 +1,7 @@
-// Browser-side API calls (sessions are httpOnly cookies on the API origin).
-const BASE = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4100/api';
+// Browser-side API calls (sessions are httpOnly cookies, set through the /api proxy).
+// Same-origin by default: the browser calls /api on whatever host serves the site (localhost, LAN IP, real domain)
+// and next.config.ts rewrites it to the API, so cookies stay first-party and no CORS is needed.
+const BASE = process.env.NEXT_PUBLIC_API_URL ?? '/api';
 
 export class ApiError extends Error {
   constructor(public status: number, message: string) { super(message); }

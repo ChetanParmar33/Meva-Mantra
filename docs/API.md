@@ -1,9 +1,9 @@
 # Meva Mantra API contract
 
-Base URL: `http://localhost:4100/api` (env `API_URL` on the server side, `NEXT_PUBLIC_API_URL` in the browser).
+Base URL: `http://localhost:4100/api` (env `API_URL`, server side). Browsers call `/api` on the website/admin host (`NEXT_PUBLIC_API_URL=/api`), which `next.config.ts` rewrites to the API; client IP reaches the API via `X-Forwarded-For` from the front proxy.
 All browser calls use `credentials: 'include'` (sessions are httpOnly cookies). Bodies are JSON.
 **Money is always in paise** (`₹679 = 67900`). Errors: `{ statusCode, message: string | string[] }`.
-Uploaded product images are served from `http://localhost:4100/uploads/<file>` (field `url` is absolute).
+Uploaded product images are served from `/uploads/<file>` (relative when `PUBLIC_URL` is empty; the website/admin proxy `/uploads` to the API).
 
 ## Public catalogue
 

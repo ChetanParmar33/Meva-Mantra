@@ -1,4 +1,5 @@
-const BASE = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4100/api';
+// Same-origin by default (/api is rewritten to the API in next.config.ts), so it also works from a phone on the LAN.
+const BASE = process.env.NEXT_PUBLIC_API_URL ?? '/api';
 export const STORE_URL = process.env.NEXT_PUBLIC_STORE_URL ?? 'http://localhost:3100';
 
 export class ApiError extends Error {
