@@ -86,7 +86,7 @@ docs/                             API.md (endpoint contract), DEPLOY.md (go-live
 - **OTP:** hashed, 10 min validity, rate limited. Dev returns the code to the screen.
 - **Prices are computed only on the server** (`/cart/quote`): coupons (dates, minimum order, usage limit, first order only), 5% prepaid discount, free shipping from ₹500 (else ₹49), gift wrap ₹49. Values live in Settings.
 - **Checkout:** stock reserved atomically, coupon usage counted atomically, order numbers from Postgres sequence `order_number_seq` (MM10001…). Unpaid orders auto-cancel after 30 min and release stock. A Razorpay payment that arrives after auto-cancel is flagged for refund.
-- **Razorpay:** order via REST, HMAC signature check, webhook (raw body HMAC with `RAZORPAY_WEBHOOK_SECRET`). No keys → demo payment (dev only).
+- **Razorpay:** order created server-side inside `/checkout` (amount from the server quote, never from the browser) via REST `fetch` (no SDK), Checkout.js modal in `components/checkout.tsx` (key id comes from the API per order, so no `NEXT_PUBLIC_` key), HMAC signature check on `/payments/razorpay/verify` (mismatch → 400, never marks paid), webhook (raw body HMAC with `RAZORPAY_WEBHOOK_SECRET`). No keys → demo payment (dev only). Test keys live only in `apps/api/.env` (gitignored).
 - **Product images:** generated SVG art at `/art/p/<slug>/<view>-<variant>.svg` (cacheable). An uploaded photo (admin, ≤3 MB JPG/PNG/WebP, file signature checked, stored in `apps/api/uploads/`, not in git) replaces **only the main image (view 0)**. Gallery views 1–3 stay artwork; no per-colour photos yet.
 - Store catalogue pages are cached about 60 s, so admin edits show on the store within about a minute.
 - Stock counts are never exposed publicly.
@@ -105,6 +105,8 @@ docs/                             API.md (endpoint contract), DEPLOY.md (go-live
 - **Processes:** stop a server by the PID on its port (`ss -ltnp | grep :4100`). Never `pkill -f` (it can kill your own shell). Never start a second `pnpm dev`: duplicate Nest watchers give `EADDRINUSE :4100`.
 - **Behind a proxy:** API trusts the loopback proxy; the front proxy (Caddy/Nginx) must set `X-Forwarded-For`, or rate limits see one IP.
 - The machine's disk is nearly full: avoid new dependencies and big downloads.
+- **Owner's office network DNS (router 192.168.1.1) is very slow for uncommon domains** (10–25 s for `api.razorpay.com`). Node `fetch` gives up after 10 s, so Razorpay order creation fails locally (customer sees "Payment gateway is unavailable"). Fix on the machine: use DNS 1.1.1.1 / 8.8.8.8. Production servers are not affected.
+- Don't run `pnpm build` / `nest build` for the API while `pnpm dev` is running: it wipes `dist/` and the dev API dies silently. Restart it with `pnpm dev:api`.
 
 ## 8. Verify before saying "done"
 
@@ -127,7 +129,7 @@ _Last updated: 2026-11-27_
 
 - **Done:** website, admin, API, docs; mobile polish; same-origin `/api` proxy (phones on Wi-Fi); Gooku agent; launch list (7 live, 18 coming soon, new Badam/Kaju/Kishmish in a new "Dry Fruits" category). Local DB = clean seed (0 orders, next order MM10001).
 - **Needs owner input:** confirm Badam/Kaju/Kishmish prices (placeholders, no MRP), descriptions and shelf life; product photos (`docs/PRODUCT_PHOTOS.md`, launch 7 first); real contact details (Admin → Settings); remove demo reviews, ratings and stats; final policies; FSSAI (and GST) number on the site; final prices and stock.
-- **Go-live:** domain, server, Razorpay live keys + webhook, SMTP email, production env, daily backups (`docs/DEPLOY.md`).
+- **Go-live:** domain, server, Razorpay live keys + webhook (test keys already set locally), SMTP email, production env, daily backups (`docs/DEPLOY.md`).
 - **Optional:** multi-photo gallery and per-colour photos; Google Analytics + Search Console; admin mobile polish.
 - **Skipped on purpose (paid):** SMS OTP, Shiprocket, WhatsApp Business API.
 

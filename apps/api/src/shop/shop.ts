@@ -113,8 +113,13 @@ export class ShopController {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Authorization: 'Basic ' + Buffer.from(`${rp.id}:${rp.secret}`).toString('base64') },
           body: JSON.stringify({ amount: order.totalPaise, currency: 'INR', receipt: order.number, notes: { orderNumber: order.number } }),
-        });
-        if (!res.ok) { await this.cancel(order.id, 'Payment gateway error'); throw new ServiceUnavailableException('Payment gateway is unavailable. Please try again or use COD.'); }
+        }).catch((e: Error & { cause?: { code?: string } }) => { console.error('[razorpay] network error', e.cause?.code ?? e.message); return null; });
+        if (!res?.ok) {
+          // 401 here = wrong RAZORPAY_KEY_ID/SECRET. The customer gets 503 (a 401 would log them out of the store).
+          if (res) console.error('[razorpay] create order failed', res.status, (await res.text()).slice(0, 300));
+          await this.cancel(order.id, 'Payment gateway error');
+          throw new ServiceUnavailableException('Payment gateway is unavailable. Please try again or use COD.');
+        }
         const rpo = (await res.json()) as { id: string };
         await this.db.payment.updateMany({ where: { orderId: order.id }, data: { providerOrderId: rpo.id } });
         payment = { provider: 'razorpay', keyId: rp.id, razorpayOrderId: rpo.id, amountPaise: order.totalPaise, name: dto.address.name, email: dto.address.email, phone: dto.address.phone };
@@ -135,7 +140,7 @@ export class ShopController {
     const expected = createHmac('sha256', rp.secret).update(`${dto.razorpay_order_id}|${dto.razorpay_payment_id}`).digest('hex');
     const ok = expected.length === dto.razorpay_signature.length && timingSafeEqual(Buffer.from(expected), Buffer.from(dto.razorpay_signature));
     if (!ok) {
-      await this.db.payment.update({ where: { id: pay.id }, data: { status: 'FAILED' } });
+      await this.db.payment.updateMany({ where: { id: pay.id, status: 'CREATED' }, data: { status: 'FAILED' } });
       throw new BadRequestException('Payment could not be verified.');
     }
     return this.markPaid(pay.orderId, pay.id, dto.razorpay_payment_id);

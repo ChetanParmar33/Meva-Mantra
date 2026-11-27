@@ -107,7 +107,7 @@ type AddrForm = { name: string; phone: string; email: string; line1: string; lan
 const EMPTY: AddrForm = { name: '', phone: '', email: '', line1: '', landmark: '', city: '', state: '', pincode: '', type: 'HOME' };
 type PaymentStart = { provider: 'razorpay'; keyId: string; razorpayOrderId: string; amountPaise: number; name: string; email: string; phone: string } | { provider: 'demo'; amountPaise: number };
 type Placed = { number: string; status: string; totalPaise: number; phone: string; paymentMode: 'PREPAID' | 'COD' };
-type RazorpayCtor = new (o: Record<string, unknown>) => { open: () => void; on: (e: string, f: (r: unknown) => void) => void };
+type RazorpayCtor = new (o: Record<string, unknown>) => { open: () => void; on: (e: string, f: (r: { error?: { description?: string } }) => void) => void };
 
 function validate(f: AddrForm) {
   const e: Partial<Record<keyof AddrForm, string>> = {};
@@ -213,7 +213,8 @@ export function CheckoutView() {
   async function openRazorpay(order: Placed, p: Extract<PaymentStart, { provider: 'razorpay' }>) {
     try {
       const Razorpay = await loadRazorpay();
-      new Razorpay({
+      setErr('');
+      const rzp = new Razorpay({
         key: p.keyId, amount: p.amountPaise, currency: 'INR', order_id: p.razorpayOrderId, name: settings.brand.name, description: `Order ${order.number}`,
         prefill: { name: p.name, email: p.email, contact: p.phone }, theme: { color: '#1F4D3A' },
         handler: async (resp: Record<string, string>) => {
@@ -222,7 +223,10 @@ export function CheckoutView() {
             await finishPaid({ ...order, status: v.order.status });
           } catch (x) { setErr((x as Error).message); }
         },
-      }).open();
+        modal: { ondismiss: () => setErr('Payment not completed. Tap Pay to try again: your order is held for 30 minutes.') },
+      });
+      rzp.on('payment.failed', (r) => setErr(`Payment failed: ${r.error?.description ?? 'please try again'}. You can retry or use another method.`));
+      rzp.open();
     } catch (x) { setErr((x as Error).message); }
   }
 
